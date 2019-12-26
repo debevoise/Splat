@@ -1,0 +1,25 @@
+{
+  "name": "splat",
+  "version": "1.0.0",
+  "description": "A simple web-based audio sampler and sequencer ",
+  "main": "app.js",
+  "scripts": {
+      "start": "node app.js",
+      "server": "nodemon app.js"
+  },
+  "author": "Simon DeBevoise",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.8.3",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "validator": "^12.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
