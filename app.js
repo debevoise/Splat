@@ -1,12 +1,8 @@
-
-// import { express } from 'express';
-// import { mongoURI } from './config/keys.js';
-// import { Mongoose } from 'mongoose';
-
-
 const Mongoose = require("mongoose");
 const express = require("express");
 const db = require("./config/keys").mongoURI;
+const samples = require('./routes/api/samples');
+const bodyParser = require('body-parser');
 
 Mongoose
   .connect(db, { useNewUrlParser: true })
@@ -16,6 +12,10 @@ Mongoose
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.get("/", (req, res) => res.send("Demon"));
+app.get("/", (req, res) => res.send("Johnson"));
+app.use('/api/samples', samples)
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 app.listen(port, () => console.log(`Server is running on port ${port}`));
 
