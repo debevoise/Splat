@@ -1,14 +1,15 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const SampleSchema = new Schema({
+const ThemeSchema = new Schema({
     name: {
         type: String,
         required: true
     },
-    url: {
-        type: String,
-        required: true
+    samples: {
+        type: [SampleSchema],
+        required: true,
+        default: []
     },
     date: {
         type: Date,
@@ -16,4 +17,4 @@ const SampleSchema = new Schema({
     }
 })
 
-module.exports = Sample = mongoose.model('Sample', SampleSchema)
+module.exports = Theme = mongoose.model('Theme', ThemeSchema)
