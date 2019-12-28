@@ -2,18 +2,23 @@ const Mongoose = require("mongoose");
 const express = require("express");
 const db = require("./config/keys").mongoURI;
 const samples = require('./routes/api/samples');
+const themes = require('./routes/api/themes');
+const sequences = require('./routes/api/sequences');
 const bodyParser = require('body-parser');
 
 Mongoose
-  .connect(db, { useNewUrlParser: true })
+  .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("Connected to MongoDB successfully"))
   .catch(err => console.log(err));
 
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.get("/", (req, res) => res.send("Johnson"));
+app.get("/", (req, res) => res.send("Appy McAppFace"));
 app.use('/api/samples', samples)
+app.use('/api/themes', themes)
+app.use('/api/sequences', sequences)
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 

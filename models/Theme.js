@@ -4,13 +4,14 @@ const { Schema } = mongoose;
 const ThemeSchema = new Schema({
     name: {
         type: String,
-        required: true
-    },
-    samples: {
-        type: [SampleSchema],
         required: true,
-        default: []
+        unique: true
     },
+    samples: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Sample',
+        default: []
+    }],
     date: {
         type: Date,
         default: Date.now

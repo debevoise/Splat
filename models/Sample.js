@@ -4,7 +4,8 @@ const { Schema } = mongoose;
 const SampleSchema = new Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     url: {
         type: String,
