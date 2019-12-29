@@ -1,20 +1,41 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const SequenceSchema = new Schema({
-    tracks: {
-        type: [TrackSchema],
+const TrackSchema = new Schema({
+    pattern: [{
+        type: Boolean,
+        default: [false, false, false, false, false, false, false, false]
+    }],
+    sample: {
+        type: Schema.Types.ObjectId,
+        ref: 'Sample',
         required: true,
-        default: [null, null, null, null, null, null, null, null]
     },
+    volume: {
+        type: Number,
+        default: 11
+    },
+    pitch: {
+        type: Number,
+        default: 0
+    },
+    date: {
+        type: Date,
+        default: Date.now
+    }
+})
+
+const SequenceSchema = new Schema({
+    tracks: [{
+        type: TrackSchema,
+        default: [null, null, null, null, null, null, null, null]
+    }],
     tempo: {
         type: Number,
-        required: true,
         default: 120
     },
     masterVolume: {
         type: Number,
-        required: true,
         default: 11
     },
     date: {
