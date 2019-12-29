@@ -4,7 +4,12 @@ const { Schema } = mongoose;
 const TrackSchema = new Schema({
     pattern: [{
         type: Boolean,
-        default: [false, false, false, false, false, false, false, false]
+        default: [
+            false, false, false, false, 
+            false, false, false, false, 
+            false, false, false, false, 
+            false, false, false, false
+        ]
     }],
     sample: {
         type: Schema.Types.ObjectId,
