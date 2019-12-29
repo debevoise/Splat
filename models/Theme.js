@@ -1,20 +1,21 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const SampleSchema = new Schema({
+const ThemeSchema = new Schema({
     name: {
         type: String,
         required: true,
         unique: true
     },
-    url: {
-        type: String,
-        required: true
-    },
+    samples: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Sample',
+        default: []
+    }],
     date: {
         type: Date,
         default: Date.now
     }
 })
 
-module.exports = Sample = mongoose.model('Sample', SampleSchema)
+module.exports = Theme = mongoose.model('Theme', ThemeSchema)
