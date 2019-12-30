@@ -19,7 +19,7 @@ const themesReducer = (state = {}, action) => {
       action.theme.samples.forEach( sample => {
         sampleInfo.push(sample._id)
       })
-      return {samples: sampleInfo};
+      return Object.assign({}, state, { [action.theme._id]: { samples: sampleInfo }});
     default:
       return state;
   }
