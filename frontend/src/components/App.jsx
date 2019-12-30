@@ -9,18 +9,19 @@ class App extends React.Component {
 		this.samples = [];
 	}
 
+	
 
 	render() {
 		return (
-			<main>
-
+      <main>
 				<audio 
-					id='sample1'
+					id="sample1" 
+					ref={audio => (this.samples[0] = audio)}
 				>
-					Your browser does not support audio playback
-				</audio>
-			</main>
-		)
+          Your browser does not support audio playback
+        </audio>
+      </main>
+    );
 	}
 }
 
