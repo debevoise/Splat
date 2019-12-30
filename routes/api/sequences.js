@@ -6,6 +6,7 @@ router.get("/test", (req, res) => res.json({ msg: "This is the sequences route" 
 
 router.get('/', (req, res) => {
     Sequence.find()
+        // .populate('theme')
         .then(sequences => res.json(sequences))
         .catch(err => res.status(404).json({ error: err || "Sequences not found" }));
 });
