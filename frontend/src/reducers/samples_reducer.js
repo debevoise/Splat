@@ -1,7 +1,4 @@
-import { 
-  RECEIVE_SAMPLES,
-  RECEIVE_SAMPLE, 
-  RECEIVE_SAMPLE_ERRORS } from '../actions/sample_actions';
+import { RECEIVE_SAMPLES, RECEIVE_SAMPLE } from '../actions/sample_actions';
 
 const samplesReducer = ( state = {}, action ) => {
   Object.freeze(state);
@@ -11,8 +8,6 @@ const samplesReducer = ( state = {}, action ) => {
     case RECEIVE_SAMPLE:
       let newSamples = Object.assign({}, state.samples, action.sample);
       return Object.assign({}, state, {samples: newSamples});
-    case RECEIVE_SAMPLE_ERRORS:
-      return action.errors;
     default:
       return state;
   }
