@@ -4,10 +4,12 @@ const samplesReducer = ( state = {}, action ) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_SAMPLES:
-      return Object.assign({}, state, {samples: action.samples});
+      return Object.assign({}, state, action.samples);
     case RECEIVE_SAMPLE:
-      let newSamples = Object.assign({}, state.samples, action.sample);
-      return Object.assign({}, state, {samples: newSamples});
+      let newSamples = Object.assign({}, state.samples, {
+        [action.sample.id]: action.sample
+      });
+      return Object.assign({}, state, newSamples);
     default:
       return state;
   }
