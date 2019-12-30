@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
 import samplesReducer from './samples_reducer';
-// import sequencesReducer from './sequences_reducer';
+import sequencesReducer from './sequences_reducer';
+import themesReducer from './themes_reducer';
 
 const entitiesReducer = combineReducers({
   samples: samplesReducer,
-  // sequences: sequencesReducer
+  themes: themesReducer,
+  sequences: sequencesReducer
 })
 
 export default entitiesReducer;

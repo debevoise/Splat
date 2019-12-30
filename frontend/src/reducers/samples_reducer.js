@@ -7,12 +7,12 @@ const samplesReducer = ( state = {}, action ) => {
     case RECEIVE_SAMPLES:
       let newState = {};
       action.samples.forEach( sample => {
-        newState[sample.id] = sample
+        newState[sample._id] = sample
       });
       return Object.assign({}, state, newState);
     case RECEIVE_SAMPLE:
       return Object.assign({}, state, {
-        [action.sample.id]: action.sample
+        [action.sample._id]: action.sample
       });
     default:
       return state;
