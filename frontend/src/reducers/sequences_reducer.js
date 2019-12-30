@@ -5,13 +5,17 @@ const sequencesReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_SEQUENCE:
-      let { sequence } = action;
+      const { sequence } = action;
       return Object.assign({}, state, {
         [sequence.id]: sequence
       })
 
     case RECEIVE_SEQUENCES:
-      return action.sequences;
+      const newState = {};
+      action.sequences.forEach(seq => {
+        newState[seq.id] = seq;
+      })
+      return Object.assign({}, state, newState);
 
     default:
       return state;
