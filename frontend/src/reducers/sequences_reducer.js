@@ -6,6 +6,7 @@ const sequencesReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_SEQUENCE:
       const { sequence } = action;
+      sequence.theme = sequence.theme._id;
       return Object.assign({}, state, {
         [sequence._id]: sequence
       })
@@ -13,6 +14,7 @@ const sequencesReducer = (state = {}, action) => {
     case RECEIVE_SEQUENCES:
       const newState = {};
       action.sequences.forEach(seq => {
+        seq.theme = seq.theme.id;
         newState[seq._id] = seq;
       })
       return Object.assign({}, state, newState);
