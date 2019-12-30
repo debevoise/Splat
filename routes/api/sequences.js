@@ -13,9 +13,15 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
     Sequence.findById(req.params.id)
         .populate({
-            path: 'tracks.sample',
-            model: "Sample"
+            path: 'theme',
+            populate: {
+                path: 'samples'
+            }
         })
+        // .populate({
+        //     path: 'theme.samples',
+        //     model: "Sample"
+        // })
         .then(sequence => res.json(sequence))
         .catch(err =>
             res.status(404).json({ error: err || "Sequence not found" })

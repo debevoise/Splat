@@ -11,14 +11,14 @@ const TrackSchema = new Schema({
             false, false, false, false
         ]
     }],
-    sample: {
-        type: Schema.Types.ObjectId,
-        ref: 'Sample',
-        required: true,
-    },
+    // sample: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Sample',
+    //     required: true,
+    // },
     volume: {
         type: Number,
-        default: 11
+        default: 1
     },
     pitch: {
         type: Number,
@@ -28,7 +28,7 @@ const TrackSchema = new Schema({
         type: Date,
         default: Date.now
     }
-})
+});
 
 const SequenceSchema = new Schema({
     tracks: [{
@@ -41,12 +41,17 @@ const SequenceSchema = new Schema({
     },
     masterVolume: {
         type: Number,
-        default: 11
+        default: 1
+    },
+    theme: {
+        type: Schema.Types.ObjectId,
+        ref: 'Theme',
+        required: true,
     },
     date: {
         type: Date,
         default: Date.now
     }
-})
+});
 
-module.exports = Sequence = mongoose.model('Sequence', SequenceSchema)
+module.exports = Sequence = mongoose.model('Sequence', SequenceSchema);
