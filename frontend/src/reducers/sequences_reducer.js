@@ -7,13 +7,13 @@ const sequencesReducer = (state = {}, action) => {
     case RECEIVE_SEQUENCE:
       const { sequence } = action;
       return Object.assign({}, state, {
-        [sequence.id]: sequence
+        [sequence._id]: sequence
       })
 
     case RECEIVE_SEQUENCES:
       const newState = {};
       action.sequences.forEach(seq => {
-        newState[seq.id] = seq;
+        newState[seq._id] = seq;
       })
       return Object.assign({}, state, newState);
 

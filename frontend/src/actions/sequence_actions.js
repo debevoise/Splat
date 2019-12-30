@@ -21,14 +21,14 @@ const receiveErrors = errors => ({
 
 export const fetchSequence = (seqId) => dispatch => {
   return SequencesApiUtil.fetchSequence(seqId).then(
-    (sequence) => dispatch(receiveSequence(sequence)),
+    ({ data }) => dispatch(receiveSequence(data)),
     (errors) => dispatch(receiveErrors(errors))
   )
 }
 
 export const fetchSequences = () => dispatch => {
   return SequencesApiUtil.fetchSequences().then(
-    (sequences) => dispatch(receiveSequences(sequences)),
+    ({ data }) => dispatch(receiveSequences(data)),
     (errors) => dispatch(receiveErrors(errors))
   )
 }
