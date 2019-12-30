@@ -12,16 +12,19 @@ const Theme = require('./Theme');
 const Sample = require('./Sample');
 const Sequence = require('./Sequence');
 
+console.log('Dropping collections');
 Promise.all([
     db.dropCollection('themes'),
-    db.dropCollection('samples')
-]).then(
+    db.dropCollection('samples'),
+    db.dropCollection('sequences')
+]).then(() => {
     // Sample.create({name: 'Kick', url: 'fake'}, function (err, sample) {
     //     if (err) return console.error(err);
     //     console.log(sample);
     //     console.log('in the callback')
     // });
 
+    console.log('Inserting Samples');
     Sample.insertMany([
         {name: 'Hat', url: 'fake'},
         {name: 'Rim', url: 'fake'},
@@ -31,20 +34,30 @@ Promise.all([
         {name: 'Guitar', url: 'fake'},
         {name: 'Cowbell', url: 'fake'},
         {name: 'Triangle', url: 'fake'},
-    ]).then((samples) => {
+    ]).then(samples => {
+        console.log('Inserting Themes');
         Theme.insertMany([
             {name: 'Drums', samples: [samples[0], samples[1]]},
             {name: 'Meat', samples: [samples[2], samples[3], samples[7]]},
             {name: 'Electronic', samples: [samples[4], samples[5], samples[6]]},
-        ]);
+        ]).then(themes => {
+            const track = {
+                pattern: [
+                    false, false, false, false,
+                    false, false, false, false,
+                    false, false, false, false,
+                    false, false, false, false
+                ]
+            };
 
-        const track = {
-            pattern: [true, false, true, false, true, false, true, false],
-            sample: samples[0],   
-        }
-
-        Sequence.create({
-            tracks: [track, track, track, track, track, track, track, track],
-        })
-    })
-)
+            console.log('Inserting Sequence');
+            Sequence.create({
+                tracks: [track, track, track, track, track, track, track, track],
+                theme: themes[0]
+            }).then(() => {
+                console.log('Success!');
+                console.log('You can hard quit this... it doesn\'t exit for some reason');
+            });
+        });
+    });
+});

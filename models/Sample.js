@@ -15,6 +15,6 @@ const SampleSchema = new Schema({
         type: Date,
         default: Date.now
     }
-})
+});
 
 module.exports = Sample = mongoose.model('Sample', SampleSchema)

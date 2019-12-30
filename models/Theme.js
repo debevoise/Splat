@@ -16,6 +16,6 @@ const ThemeSchema = new Schema({
         type: Date,
         default: Date.now
     }
-})
+});
 
 module.exports = Theme = mongoose.model('Theme', ThemeSchema)
