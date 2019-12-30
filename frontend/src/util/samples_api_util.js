@@ -1,8 +1,10 @@
-import $ from 'jquery';
+import axios from 'axios';
 
 export const fetchSamples = () => {
-    return $.ajax({
-        url: '/api/samples/'
-    })
+    return axios.get('/api/samples')
+}
+
+export const fetchSample = sampleId => {
+    return axios.get(`/api/samples/${sampleId}`)
 }
 
