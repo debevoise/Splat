@@ -2,14 +2,18 @@ import { RECEIVE_SAMPLES, RECEIVE_SAMPLE } from '../actions/sample_actions';
 
 const samplesReducer = ( state = {}, action ) => {
   Object.freeze(state);
+  
   switch(action.type) {
     case RECEIVE_SAMPLES:
-      return Object.assign({}, state, action.samples);
+      let newState = {};
+      action.samples.forEach( sample => {
+        newState[sample.id] = sample
+      });
+      return Object.assign({}, state, newState);
     case RECEIVE_SAMPLE:
-      let newSamples = Object.assign({}, state.samples, {
+      return Object.assign({}, state, {
         [action.sample.id]: action.sample
       });
-      return Object.assign({}, state, newSamples);
     default:
       return state;
   }

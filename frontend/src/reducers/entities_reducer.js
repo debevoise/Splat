@@ -1,4 +1,4 @@
-import { combineReducers } from 'react-redux';
+import { combineReducers } from 'redux';
 import samplesReducer from './samples_reducer';
 // import sequencesReducer from './sequences_reducer';
 

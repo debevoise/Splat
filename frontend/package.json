@@ -22,6 +22,7 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
+    "start": "react-scripts start",
     "frontend-install": "npm install --prefix frontend",
     "frontend": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run frontend\""
