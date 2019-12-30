@@ -15,9 +15,11 @@ const themesReducer = (state = {}, action) => {
       });
       return Object.assign({}, state, newState);
     case RECEIVE_THEME:
-      return Object.assign({
-        [action.theme._id]: action.theme
-      });
+      let sampleInfo = []
+      action.theme.samples.forEach( sample => {
+        sampleInfo.push(sample._id)
+      })
+      return {samples: sampleInfo};
     default:
       return state;
   }
