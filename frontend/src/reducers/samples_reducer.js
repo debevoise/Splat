@@ -12,6 +12,7 @@ const samplesReducer = ( state = {}, action ) => {
       });
       return Object.assign({}, state, newState);
     case RECEIVE_SAMPLE:
+      debugger;
       return Object.assign({}, state, {
         [action.sample._id]: action.sample
       });

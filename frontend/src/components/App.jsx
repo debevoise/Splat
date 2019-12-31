@@ -68,7 +68,8 @@ class App extends React.Component {
 
 					<Sequencer
 						audioElements={this.state.audioElements}
-						samples={this.props.currentSamples} />
+						samples={this.props.currentSamples} 
+						theme={this.props.currentTheme}/>
 				</main>
 			</div>
     );
