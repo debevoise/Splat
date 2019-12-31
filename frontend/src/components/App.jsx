@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from '../logo.svg';
 import '../styles/App.css';
 import NavBar from './NavBar';
 import Sampler from './Sampler';
@@ -10,7 +9,11 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.samples = new Array(8);
+		// this.samples = new Array(8);
+		this.state = {
+			loaded: false,
+			audioElements: new Array(8)
+		};
 	}
 
 	componentDidMount() {
@@ -26,7 +29,16 @@ class App extends React.Component {
 			return (
 				<li key={idx} className="audio-elements-list">
 					<audio
-						ref={audio => (this.samples[idx] = audio)}
+						// ref={audio => (this.samples[idx] = audio)}
+						ref={audio => { 
+							if (!this.state.loaded) {
+								this.setState(({ audioElements }) => {
+									const newAudioElements = [...audioElements];
+									newAudioElements[idx] = audio;
+									return { audioElements: newAudioElements };
+								})
+							}
+						}}
 						src={sample.url}
 					>
 						Your browser does not support audio playback
@@ -35,6 +47,11 @@ class App extends React.Component {
 			);
 		});
 
+		if (!this.state.loaded) {
+			this.setState({
+				loaded: true
+			})
+		}
 		return (
 			<ul className='samplesList'>{audioElements}</ul>
 		)
@@ -47,8 +64,11 @@ class App extends React.Component {
 				<NavBar />
 				<main>
 					{this.renderAudioElementsList()}
-					<Sampler samples={this.samples} />
-					<Sequencer samples={this.samples} />
+					<Sampler audioElements={this.state.audioElements} />
+
+					<Sequencer
+						audioElements={this.state.audioElements}
+						samples={this.props.currentSamples} />
 				</main>
 			</div>
     );
