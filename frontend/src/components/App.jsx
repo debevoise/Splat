@@ -25,7 +25,7 @@ class App extends React.Component {
 
 		const audioElements = this.props.currentSamples.map((sample, idx) => {
 			return (
-				<li key={sample._id} className="audio-elements-list">
+				<li key={idx} className="audio-elements-list">
 					<audio
 						// ref={audio => (this.samples[idx] = audio)}
 						ref={audio => { 
