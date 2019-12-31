@@ -10,11 +10,13 @@ class App extends React.Component {
 	}
 
 	componentDidMount() {
-
+		
 
 	}
 
 	createAudioElementsList() {
+		if (!this.props.theme || !this.props.samples) return null;
+
 		const audioElements = this.props.theme.samples.map((sampleId, idx) => {
 			const sample = this.props.samples[sampleId];
 			return (
