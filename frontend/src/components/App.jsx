@@ -10,7 +10,7 @@ class App extends React.Component {
 		// this.samples = new Array(8);
 		this.state = {
 			loaded: false,
-			samples: new Array(8)
+			audioElements: new Array(8)
 		};
 	}
 
@@ -30,10 +30,10 @@ class App extends React.Component {
 						// ref={audio => (this.samples[idx] = audio)}
 						ref={audio => { 
 							if (!this.state.loaded) {
-								this.setState(({ samples }) => {
-									const newSamples = [...samples];
-									newSamples[idx] = audio;
-									return { samples: newSamples };
+								this.setState(({ audioElements }) => {
+									const newAudioElements = [...audioElements];
+									newAudioElements[idx] = audio;
+									return { audioElements: newAudioElements };
 								})
 							}
 						}}
@@ -56,13 +56,14 @@ class App extends React.Component {
 	}
 
 	render() {
-		const audioElements = this.renderAudioElementsList();
-
 		return (
 			<main>
-				{audioElements}
-				<Sampler samples={this.state.samples} />
-				<Sequencer samples={this.state.samples} />
+				{this.renderAudioElementsList()}
+				<Sampler audioElements={this.state.audioElements} />
+				
+				<Sequencer 
+					audioElements={this.state.audioElements} 
+					samples={this.props.currentSamples}/>
 			</main>
 		);
 	}
