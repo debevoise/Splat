@@ -1,0 +1,14 @@
+.sample {
+  background-color: palevioletred;
+  cursor: pointer;
+  border: 5px outset rgb(214, 126, 155)
+}
+
+.sample:hover {
+  border-style: outset;
+  background-color: rgb(202, 92, 129);
+}
+
+.sample:active {
+  border-style: inset;
+}
