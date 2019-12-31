@@ -10,6 +10,13 @@ router.get('/', (req, res) => {
         .catch(err => res.status(404).json({ nothemesfound: 'No themes found' }));
 });
 
+router.get('/default/', (req, res) => {
+    Theme.findOne({ name: 'default' })
+        .populate('samples')
+        .then(theme => res.json(theme))
+        .catch(err => res.status(404).json({ nothemesfound: 'No default themes found' }));
+});
+
 router.get('/:id', (req, res) => {
     Theme.findById(req.params.id)
         .populate('samples')
