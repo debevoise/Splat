@@ -19,9 +19,7 @@ class App extends React.Component {
 			const sample = this.props.samples[sampleId];
 			return (
 				<li key={idx} className="audio-elements-list">
-					<h3>{sample.name}</h3>
 					<audio
-						id="sample1"
 						ref={audio => (this.samples[idx] = audio)}
 						src={sample.url}
 					>
