@@ -5,8 +5,8 @@ import { fetchSamples } from '../actions/sample_actions';
 
 const msp = (state) => {
     const currentThemeId = state.session.currentTheme;
-    const currentTheme = state.entities.themes[currentThemeId] || { samples: [] };
-    const currentSamples = currentTheme.samples.map(sampleId => state.entities.samples[sampleId]);
+    const currentTheme = state.entities.themes[currentThemeId];
+    const currentSamples = currentTheme ? currentTheme.samples.map(sampleId => state.entities.samples[sampleId]) : null;
     const allThemes = state.entities.themes;
     const allSamples= state.entities.samples;
 

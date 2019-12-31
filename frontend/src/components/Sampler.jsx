@@ -1,18 +1,19 @@
 import React from "react";
+import SamplePad from './SamplePad';
+import '../styles/Sampler.css';
+
 
 export default class Sampler extends React.Component {
-    render() {
-        return (
-            <section id="sampler">
-                <div className="sample"></div>
-                <div className="sample"></div>
-                <div className="sample"></div>
-                <div className="sample"></div>
-                <div className="sample"></div>
-                <div className="sample"></div>
-                <div className="sample"></div>
-                <div className="sample"></div>
-            </section>
-        );
-    }
+  render() {
+    const { audioElements } = this.props;
+    const samplePads = audioElements.map((audio, idx) => {
+      return <SamplePad key={idx} audio={audio}/>
+    })
+
+    return (
+      <section id="sampler">
+        {samplePads}
+      </section>
+    );
+  }
 }
