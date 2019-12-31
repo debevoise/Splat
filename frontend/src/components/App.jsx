@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from '../logo.svg';
 import '../styles/App.css';
+import Sampler from './Sampler';
+import Sequencer from './Sequencer';
 
 class App extends React.Component {
 	constructor(props) {
@@ -15,11 +17,10 @@ class App extends React.Component {
 		this.props.fetchSamples();
 	}
 
-	createAudioElementsList() {
-		if (!this.props.theme || !this.props.samples) return null;
+	renderAudioElementsList() {
+		if (!this.props.currentTheme || !this.props.currentSamples) return null;
 
-		const audioElements = this.props.theme.samples.map((sampleId, idx) => {
-			const sample = this.props.samples[sampleId];
+		const audioElements = this.props.currentSamples.map((sample, idx) => {
 			return (
 				<li key={idx} className="audio-elements-list">
 					<audio
@@ -32,13 +33,17 @@ class App extends React.Component {
 			);
 		});
 
-		return <ul className='samplesList'>{audioElements}</ul>
+		return (
+			<ul className='samplesList'>{audioElements}</ul>
+		)
 	}
 
 	render() {
 		return (
       <main>
-				<p>hello world</p>
+				{this.renderAudioElementsList()}
+				<Sampler samples={this.samples} />
+				<Sequencer samples={this.samples} />
       </main>
     );
 	}
