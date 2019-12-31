@@ -6,40 +6,44 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.samples = [];
+		this.samples = new Array(8);
 	}
 
+	componentDidMount() {
+		this.props.fetchDefaultTheme();
+		this.props.fetchThemes();
+		this.props.fetchSamples();
+	}
+
+	createAudioElementsList() {
+		if (!this.props.theme || !this.props.samples) return null;
+
+		const audioElements = this.props.theme.samples.map((sampleId, idx) => {
+			const sample = this.props.samples[sampleId];
+			return (
+				<li key={idx} className="audio-elements-list">
+					<audio
+						ref={audio => (this.samples[idx] = audio)}
+						src={sample.url}
+					>
+						Your browser does not support audio playback
+					</audio>
+				</li>
+			);
+		});
+
+		return <ul className='samplesList'>{audioElements}</ul>
+	}
 
 	render() {
 		return (
-			<main>
-
-				<audio 
-					id='sample1'
-				>
-					Your browser does not support audio playback
-				</audio>
-			</main>
-		)
+      <main>
+				<p>hello world</p>
+      </main>
+    );
 	}
 }
 
 export default App;
 
 
-//  <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
