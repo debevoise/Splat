@@ -1,5 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import '../styles/NavBar.css';
+import { openModal } from '../actions/ui_actions';
+
+
+const mdp = dispatch => ({
+  openModal: (modal) => dispatch(openModal(modal))
+});
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -15,11 +22,14 @@ class NavBar extends React.Component {
           nav-middle
         </div>
         <div className="navbar-right">
-          About
+          <p
+            style={{cursor:"pointer"}}
+            onClick={() => this.props.openModal('about')}
+          ><i class="fas fa-info-circle"></i>About</p>
         </div>
       </div>
     )
   }
 }
 
-export default NavBar
+export default connect(null, mdp)(NavBar)
