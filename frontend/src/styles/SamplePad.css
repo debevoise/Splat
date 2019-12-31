@@ -3,15 +3,17 @@
   cursor: pointer;
   border-radius: 5px;
   box-shadow: 0 0 12px rgb(22, 150, 255, 0);
-  transition: 300ms;
+  transition: 200ms;
 }
 
 .sample:hover {
-  border-style: outset;
-  transition: 300ms;
+
+  transition: 200ms;
   box-shadow: 0 0 12px rgb(22, 150, 255, 1);
 }
 
 .sample:active {
-  border-style: inset;
+  transition: 80ms;
+  background-color: rgb(255, 241, 41);
+  box-shadow: 0 0 12px rgb(255, 117, 5);
 }
