@@ -7,3 +7,7 @@ export const fetchThemes = () => {
 export const fetchTheme = themeId => {
   return axios.get(`/api/themes/${themeId}`)
 }
+
+export const fetchDefaultTheme = () => {
+  return axios.get(`/api/themes/default`);
+};
