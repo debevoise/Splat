@@ -7,27 +7,27 @@ const receiveThemes = themes => {
   return {
     type: RECEIVE_THEMES,
     themes
-  }
-}
+  };
+};
 
 const receiveTheme = theme => {
   return {
     type: RECEIVE_THEME,
     theme
-  }
-}
+  };
+};
 
 export const fetchThemes = () => dispatch => {
   return ThemesApiUtil.fetchThemes()
     .then( ({ data }) => dispatch(receiveThemes(data)))
-}
+};
 
 export const fetchTheme = themeId => dispatch => {
   return ThemesApiUtil.fetchTheme(themeId)
     .then( ({ data }) => dispatch(receiveTheme(data)))
-}
+};
 
 export const fetchDefaultTheme = () => dispatch => {
   return ThemesApiUtil.fetchDefaultTheme()
     .then( ({ data }) => dispatch(receiveTheme(data)))
-}
+};

@@ -4,13 +4,8 @@ import './styles/index.css';
 import createStore from './store/store'
 import * as serviceWorker from './serviceWorker';
 import Root from './components/Root';
-<<<<<<< HEAD
-import { fetchTheme, fetchThemes } from './actions/themes_actions';
 import { fetchSamples } from './actions/sample_actions';
-
-=======
 import { fetchTheme, fetchThemes, fetchDefaultTheme } from './actions/themes_actions';
->>>>>>> master
 
 const store = createStore();
 ReactDOM.render(<Root store={store} />, document.getElementById('root'));
@@ -23,8 +18,5 @@ serviceWorker.unregister();
 window.dispatch = store.dispatch;
 window.fetchThemes = fetchThemes;
 window.fetchTheme = fetchTheme;
-<<<<<<< HEAD
 window.fetchSamples = fetchSamples;
-=======
 window.fetchDefaultTheme = fetchDefaultTheme;
->>>>>>> master

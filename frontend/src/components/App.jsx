@@ -10,8 +10,9 @@ class App extends React.Component {
 	}
 
 	componentDidMount() {
-		
-
+		this.props.fetchDefaultTheme();
+		this.props.fetchThemes();
+		this.props.fetchSamples();
 	}
 
 	createAudioElementsList() {
@@ -37,7 +38,7 @@ class App extends React.Component {
 	render() {
 		return (
       <main>
-
+				<p>hello world</p>
       </main>
     );
 	}
