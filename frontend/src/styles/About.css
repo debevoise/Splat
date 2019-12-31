@@ -1,0 +1,31 @@
+.about-logo {
+  font-size: 37px;
+  font-weight: 500;
+  font-family: 'Bowlby One SC';
+  letter-spacing: 4px;
+  line-height: 0;
+}
+
+.about-modal-container {
+  background-color: #FFF;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.about-modal-container p {
+  line-height: 1.4;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(56, 56, 56);
+  margin: 0 5px 0 5px;
+}
+
+a:hover {
+  color: rgb(15, 15, 15);
+}
+
+i {
+  margin-right: 4px;
+}
