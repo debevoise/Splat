@@ -5,8 +5,6 @@ export default class SamplePad extends React.Component {
   constructor(props) {
     super(props);
 
-    this.audio = React.createRef();
-
     this.handlePress = this.handlePress.bind(this);
   }
 
@@ -21,11 +19,6 @@ export default class SamplePad extends React.Component {
   }
 
   render() {
-    const { sample } = this.props;
-    if (!sample) {
-      return null;
-    }
-
     return (
       <div className="sample" onMouseDown={this.handlePress}>
       </div>
