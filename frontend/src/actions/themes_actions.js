@@ -26,3 +26,8 @@ export const fetchTheme = themeId => dispatch => {
   return ThemesApiUtil.fetchTheme(themeId)
     .then( ({ data }) => dispatch(receiveTheme(data)))
 }
+
+export const fetchDefaultTheme = () => dispatch => {
+  return ThemesApiUtil.fetchDefaultTheme()
+    .then( ({ data }) => dispatch(receiveTheme(data)))
+}
