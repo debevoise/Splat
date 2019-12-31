@@ -1,12 +1,15 @@
 .sample {
-  background-color: palevioletred;
+  background-color: rgb(126, 197, 219);
   cursor: pointer;
-  border: 5px outset rgb(214, 126, 155)
+  border-radius: 5px;
+  box-shadow: 0 0 12px rgb(22, 150, 255, 0);
+  transition: 300ms;
 }
 
 .sample:hover {
   border-style: outset;
-  background-color: rgb(202, 92, 129);
+  transition: 300ms;
+  box-shadow: 0 0 12px rgb(22, 150, 255, 1);
 }
 
 .sample:active {

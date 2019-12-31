@@ -11,9 +11,11 @@ export default class Sampler extends React.Component {
     })
 
     return (
-      <section id="sampler">
-        {samplePads}
-      </section>
+      <div className='sample-section-container'>
+        <section id="sampler">
+          {samplePads}
+        </section>
+      </div>
     );
   }
 }
