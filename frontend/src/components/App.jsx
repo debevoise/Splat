@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from '../logo.svg';
 import '../styles/App.css';
+import NavBar from './NavBar';
 import Sampler from './Sampler';
 import Sequencer from './Sequencer';
 
@@ -40,11 +41,14 @@ class App extends React.Component {
 
 	render() {
 		return (
-      <main>
-				{this.renderAudioElementsList()}
-				<Sampler samples={this.samples} />
-				<Sequencer samples={this.samples} />
-      </main>
+			<div>
+				<NavBar />
+				<main>
+					{this.renderAudioElementsList()}
+					<Sampler samples={this.samples} />
+					<Sequencer samples={this.samples} />
+				</main>
+			</div>
     );
 	}
 }
