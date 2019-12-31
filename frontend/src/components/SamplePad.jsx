@@ -7,10 +7,10 @@ export default class SamplePad extends React.Component {
 
     this.audio = React.createRef();
 
-    this.handleClick = this.handleClick.bind(this);
+    this.handlePress = this.handlePress.bind(this);
   }
 
-  handleClick(e) {
+  handlePress(e) {
     e.preventDefault();
     const audio = this.props.sample;
     if (audio.paused) {
@@ -27,7 +27,7 @@ export default class SamplePad extends React.Component {
     }
 
     return (
-      <div className="sample" onClick={this.handleClick}>
+      <div className="sample" onMouseDown={this.handlePress}>
       </div>
     )
   }

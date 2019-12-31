@@ -7,10 +7,7 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.samples = new Array(8);
-		// for (let i = 0; i < this.samples.length; i++) {
-		// 	this.samples[i] = React.createRef();
-		// }
+		// this.samples = new Array(8);
 		this.state = {
 			loaded: false,
 			samples: new Array(8)
@@ -40,7 +37,6 @@ class App extends React.Component {
 								})
 							}
 						}}
-						// ref={this.samples[idx]}
 						src={sample.url}
 					>
 						Your browser does not support audio playback
@@ -60,7 +56,6 @@ class App extends React.Component {
 	}
 
 	render() {
-		// debugger;
 		const audioElements = this.renderAudioElementsList();
 
 		return (
