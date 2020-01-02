@@ -19,14 +19,14 @@
     "react-scripts": "3.3.0",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "tone": "^13.8.25"
   },
   "scripts": {
     "start": "react-scripts start",
     "frontend-install": "npm install --prefix frontend",
     "frontend": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run frontend\""
-    
   },
   "eslintConfig": {
     "extends": "react-app"

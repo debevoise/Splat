@@ -68,8 +68,13 @@
   background-color: rgb(126, 197, 219);
 }
 
-.played {
+.playingActive {
   background-color: rgb(255, 241, 41);
+  box-shadow: 0 0 12px rgb(255, 241, 41);
+}
+
+.playingInactive {
+  background-color: rgb(51, 51, 51);
 }
 
 .sequence-controls {
