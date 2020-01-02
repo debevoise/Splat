@@ -7,12 +7,36 @@ export default class Sequencer extends React.Component {
   constructor(props) {
     super(props);
 
-    this.trackRefs = Array(16);
+    this.trackRefs = Array(8);
     for (let i = 0; i < this.trackRefs.length; i++) {
       this.trackRefs[i] = React.createRef();
     }
 
+    this.state = {
+      currentBeat: 0
+    }
+
+    this.toggleLoop = this.toggleLoop.bind(this);
+    this.playStep = this.playStep.bind(this);
     this.playAtBeat = this.playAtBeat.bind(this);
+  }
+
+  toggleLoop() {
+    if (!this.timer) {
+      this.timer = setInterval(this.playStep, 250);
+    } else {
+      clearInterval(this.timer);
+      this.timer = null;
+    }
+  }
+
+  playStep() {
+    this.setState(({ currentBeat }) => {
+      this.playAtBeat(this.state.currentBeat);
+      return {
+        currentBeat: (currentBeat+1) % 16
+      }
+    })
   }
 
   playAtBeat(beat) {
@@ -57,6 +81,9 @@ export default class Sequencer extends React.Component {
         <section id="sequencer-main">
           {tracks}
         </section>
+        <div onClick={this.toggleLoop}>
+          Play
+        </div>
       </section>
     );
   }
