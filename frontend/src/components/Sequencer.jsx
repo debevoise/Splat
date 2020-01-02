@@ -58,20 +58,16 @@ export default class Sequencer extends React.Component {
   }
 
   render() {
-    const { samples, audioElements, theme } = this.props;
+    const { samples, audioNodes, theme } = this.props;
     if (theme === undefined) {
       return null;
     }
-
-    const audioNodes = samples.map(sample => {
-      return new Tone.Player(sample.url).toMaster();
-    });
 
     const sampleNames = samples.map( (sample, i) => {
       return (
         <SequencerTrackTitle 
           name={sample.name} 
-          audio={audioElements[i]} 
+          audio={audioNodes[i]} 
           key={sample._id}/>
       )
     });
