@@ -9,9 +9,7 @@ const mdp = dispatch => ({
 });
 
 class NavBar extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+
   render() {
     return (
       <div className="navbar">
