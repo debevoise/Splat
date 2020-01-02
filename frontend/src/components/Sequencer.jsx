@@ -6,12 +6,21 @@ import SequencerTrackTitle from './SequencerTrackTitle';
 export default class Sequencer extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      play: false
+    };
+
+    this.setPlayState = this.setPlayState.bind(this);
+  }
+
+  setPlayState(value) {
+    this.setState({play: value});
   }
 
   render() {
     const { samples, audioElements, theme } = this.props;
     if (theme === undefined) {
-      return null
+      return null;
     }
 
     const sampleNames = samples.map( (sample, i) => {
@@ -29,7 +38,8 @@ export default class Sequencer extends React.Component {
     return (
       <div>
         <section className="sequence-controls">
-          <i className="fas fa-play"></i>
+          <i className="fas fa-play" onClick={() => this.setPlayState(true)} ></i>
+          <i className="fas fa-pause" onClick={() => this.setPlayState(false)} ></i>
         </section>
         <section id="sequencer">
           <ul id="sequencer-left">
