@@ -12,6 +12,18 @@ export default class SequencerTrack extends React.Component {
     };
 
     this.handleClick = this.handleClick.bind(this);
+    this.playAtBeat = this.playAtBeat.bind(this);
+  }
+
+  playAtBeat(beat) {
+    if (this.state.stateArr[beat]) {
+      const { audio } = this.props;
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.currentTime = 0
+      }
+    }
   }
 
   handleClick(i) {
@@ -26,12 +38,18 @@ export default class SequencerTrack extends React.Component {
     };
   }
 
+  handleRightClick(i) {
+    return e => {
+      e.preventDefault();
+      this.props.playAtBeat(i);
+    }
+  }
+
   render() {
     if (this.props.sample === undefined) {
       return null;
     }
 
-    const { sample } = this.props;
     const trackNode = [];
 
     let i;
@@ -42,7 +60,13 @@ export default class SequencerTrack extends React.Component {
     const tracks = trackNode.map( (track, i) => {
       let idx = this.state.stateArr[i];
       return (
-        <div className={ `track ${idx}` } onClick={this.handleClick(i)} idx={i} key={i}></div>
+        <div 
+          className={ `track ${idx}` } 
+          onClick={this.handleClick(i)} 
+          onContextMenu={this.handleRightClick(i)}
+          key={i}>
+
+        </div>
       )
     })
 
