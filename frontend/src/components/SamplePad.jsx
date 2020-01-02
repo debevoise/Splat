@@ -15,24 +15,25 @@ export default class SamplePad extends React.Component {
     if (audio.paused) {
       audio.play();
     } else {
-      audio.currentTime = 0
+      audio.currentTime = 0;
     }
   }
 
   handleKeyPress(e) {
     const { audio, keypress } = this.props;
-    debugger
     if (audio.paused && e.key === keypress) {
       audio.play();
     } else {
-      audio.currentTime = 0
+      audio.currentTime = 0;
     }
   }
 
   render() {
     return (
       <div className="sample" onMouseDown={this.handlePress} onKeyDown={this.handleKeyPress}>
-        <div>{this.props.sampleInfo.name}</div>
+        <div className="sample-name">
+          {this.props.sampleInfo.name.replace(/^\d+\s*/, '')}
+        </div>
         <div></div>
       </div>
     )

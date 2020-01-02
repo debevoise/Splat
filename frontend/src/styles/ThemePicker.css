@@ -1,6 +1,13 @@
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+
 .theme-picker-container {
   width: 100%;
-  color: #fff;
+  color: rgb(22, 150, 255, 1);
   font-size: 24px;
   font-weight: 500;
   display: flex;
@@ -10,11 +17,29 @@
 
 .theme-dropdown {
   background-color: transparent;
-  color: #fff;
+  color: rgb(22, 150, 255, 1);
   font-size: 24px;
   font-weight: 500;
   padding: 10px 20px;
-  border-color: gray;
+  border-color: rgb(255, 241, 41);
   width: 70%;
-	max-width: 100%;
+  max-width: 100%;
+  cursor:pointer;
+  transition: color .3s ease;
+  display:flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.theme-dropdown:hover {
+  color: rgb(255, 241, 41);
+  text-shadow: 0 0 12px rgb(255, 117, 5);
+}
+
+.theme-dropdown:focus {
+  outline:0;
+}
+
+select {
+  padding: 5px;
 }
