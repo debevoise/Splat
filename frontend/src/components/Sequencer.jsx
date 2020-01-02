@@ -60,7 +60,7 @@ export default class Sequencer extends React.Component {
   checkValue(e) {
     if (e.target.value > 300 || e.target.value < 20) {
       this.setState({ bpm: 120 });
-      Tone.Transport.bpm.value = parseInt(120);
+      Tone.Transport.bpm.value = 120;
     } else {
       Tone.Transport.bpm.value = parseInt(e.target.value);
     }
