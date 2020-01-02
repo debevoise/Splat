@@ -1,4 +1,4 @@
-import { RECEIVE_THEMES, RECEIVE_THEME } from '../actions/themes_actions';
+import { RECEIVE_THEMES } from '../actions/themes_actions';
 import { RECEIVE_SEQUENCE } from '../actions/sequence_actions';
 
 const themesReducer = (state = {}, action) => {

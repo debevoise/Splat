@@ -64,7 +64,7 @@ class App extends React.Component {
 				<NavBar />
 				<main>
 					{this.renderAudioElementsList()}
-					<Sampler audioElements={this.state.audioElements} />
+					<Sampler audioElements={this.state.audioElements} samples={this.props.currentSamples}/>
 
 					<Sequencer
 						audioElements={this.state.audioElements}
