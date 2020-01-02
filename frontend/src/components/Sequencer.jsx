@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/sequencer.css';
 import SequencerTrack from './SequencerTrack';
 import SequencerTrackTitle from './SequencerTrackTitle';
+import Tone from "tone";
 
 export default class Sequencer extends React.Component {
   constructor(props) {
@@ -22,12 +23,7 @@ export default class Sequencer extends React.Component {
   }
 
   toggleLoop() {
-    if (!this.timer) {
-      this.timer = setInterval(this.playStep, 250);
-    } else {
-      clearInterval(this.timer);
-      this.timer = null;
-    }
+    Tone.Transport.toggle();
   }
 
   playStep() {
@@ -45,6 +41,11 @@ export default class Sequencer extends React.Component {
         trackRef.current.playAtBeat(beat)
       }
     })
+  }
+
+  componentDidMount() {
+    Tone.Transport.bpm.value = 120;
+    Tone.Transport.scheduleRepeat(this.playStep, "8n");
   }
 
   render() {
