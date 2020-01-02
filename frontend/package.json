@@ -28,7 +28,6 @@
     "frontend": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run frontend\"",
     "build": "react-scripts build"
-    
   },
   "eslintConfig": {
     "extends": "react-app"

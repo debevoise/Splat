@@ -12,7 +12,7 @@ class About extends React.Component {
 
         <p>Splat is the next big thing in musical innovation.  Spin hot mind-bending 
         tracks and shake the foundations of the music industry!
-        Play your newest cration for your friends and hear them exclaim,
+        Play your newest creation for your friends and hear them exclaim,
         "That's neat I guess", "Why's it called 'SPLAT'?"  and "Hire that team right the heck now!"
         </p>
 
