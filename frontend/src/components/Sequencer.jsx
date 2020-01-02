@@ -2,8 +2,17 @@ import React from 'react';
 import '../styles/sequencer.css';
 import SequencerTrack from './SequencerTrack';
 import SequencerTrackTitle from './SequencerTrackTitle';
+import { connect } from 'react-redux';
 
-export default class Sequencer extends React.Component {
+const msp = state => ({
+
+});
+
+const mdp = dispatch => ({
+  
+});
+
+class Sequencer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -74,3 +83,5 @@ export default class Sequencer extends React.Component {
     );
   }
 }
+
+export default connect(msp, mdp)(Sequencer);
