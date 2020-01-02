@@ -6,12 +6,27 @@ import SequencerTrackTitle from './SequencerTrackTitle';
 export default class Sequencer extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      play: false,
+      bpm: 120
+    };
+
+    this.setPlayState = this.setPlayState.bind(this);
+    this.setBPM = this.setBPM.bind(this);
+  }
+
+  setPlayState(value) {
+    this.setState({play: value});
+  }
+
+  setBPM(e) {
+    this.setState({bpm: e.target.value});
   }
 
   render() {
     const { samples, audioElements, theme } = this.props;
     if (theme === undefined) {
-      return null
+      return null;
     }
 
     const sampleNames = samples.map( (sample, i) => {
@@ -27,14 +42,31 @@ export default class Sequencer extends React.Component {
     });
     
     return (
-      <section id="sequencer">
-        <ul id="sequencer-left">
-          {sampleNames}
-        </ul>
-        <section id="sequencer-main">
-          {sequencerTracks}
+      <div>
+        <section className="sequence-controls">
+          {this.state.play ? (
+            <i className="fas fa-pause" onClick={() => this.setPlayState(false)} ></i>
+          ) : (
+            <i className = "fas fa-play" onClick = { () => this.setPlayState(true)} ></i>
+          )
+          }
+          <input
+            type="number"
+            min="20"
+            max="300"
+            value={this.state.bpm}
+            onChange={this.setBPM}
+          />
         </section>
-      </section>
+        <section id="sequencer">
+          <ul id="sequencer-left">
+            {sampleNames}
+          </ul>
+          <section id="sequencer-main">
+            {sequencerTracks}
+          </section>
+        </section>
+      </div>
     );
   }
 }
