@@ -1,7 +1,9 @@
 import React from 'react';
 import '../styles/App.css';
+import NavBar from './NavBar';
 import Sampler from './Sampler';
 import Sequencer from './Sequencer';
+import Modal from './Modal';
 
 class App extends React.Component {
 	constructor(props) {
@@ -57,15 +59,20 @@ class App extends React.Component {
 
 	render() {
 		return (
-			<main>
-				{this.renderAudioElementsList()}
-				<Sampler audioElements={this.state.audioElements} />
-				
-				<Sequencer 
-					audioElements={this.state.audioElements} 
-					samples={this.props.currentSamples}/>
-			</main>
-		);
+			<div>
+				<Modal/>
+				<NavBar />
+				<main>
+					{this.renderAudioElementsList()}
+					<Sampler audioElements={this.state.audioElements} />
+
+					<Sequencer
+						audioElements={this.state.audioElements}
+						samples={this.props.currentSamples} 
+						theme={this.props.currentTheme}/>
+				</main>
+			</div>
+    );
 	}
 }
 

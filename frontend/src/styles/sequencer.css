@@ -1,0 +1,41 @@
+#sequencer {
+  display: flex;
+  height: 320px;
+  padding: 25px;
+}
+
+#sequencer-left {
+  display: grid;
+  grid-template: repeat(8, 40px) / text-width;
+  list-style-type: none;
+  margin: 0;
+  align-items: center;
+  color: darkblue;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.track-title {
+  
+}
+
+.sequencer-sample-name {
+  width: text-width;
+  height: 40px;
+}
+
+#sequencer-main {
+  display: grid;
+  grid-template: repeat(8, 40px) / repeat(16, 40px);
+}
+
+.track {
+  background-color: grey;
+  border: 1px solid darkgrey;
+}
+
+.track:hover, .track:active {
+  background-color: slateblue;
+}
+
+
