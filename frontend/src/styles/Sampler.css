@@ -2,8 +2,18 @@
   display: grid;
   grid-template: repeat(2, 100px) / repeat(4, 100px);
   gap: 20px;
+
   padding: 60px 40px;
-  margin: 0 auto;
-  background-color: cornflowerblue;
-  border: 20px ridge rgb(120, 160, 235);
+  text-align: center;
+
+  /* margin: 0 auto; */
+  /* background-color: rgb(255, 160, 123); */
+
+}
+
+
+.sample-section-container {
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
 }
