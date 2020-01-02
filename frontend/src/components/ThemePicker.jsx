@@ -35,6 +35,7 @@ class ThemePicker extends React.Component {
       return (
         <option
           value={theme._id}
+          selected={theme.name === 'default'}
           key={i}
         >
           {theme.name}
