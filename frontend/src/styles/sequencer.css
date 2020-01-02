@@ -59,7 +59,7 @@
 }
 
 .track:hover {
-  background-color: rgb(126, 197, 219);
+  background-color: rgb(255, 210, 137);
   box-shadow: 0 0 12px rgb(22, 150, 255, 1);
   /* transition: 200ms; */
 }

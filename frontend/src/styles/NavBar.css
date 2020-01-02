@@ -10,12 +10,12 @@
   font-weight: 500;
   font-family: 'Bowlby One SC';
   letter-spacing: 10px;
-  text-shadow: 0 0 12px rgb(22, 150, 255, 1);
+  text-shadow: 0 0 12px rgb(118, 193, 255);
   transition: color .5s ease;
 }
 .navbar-logo:hover, .navbar-right p:hover {
-  color: rgb(255, 241, 41);
-  text-shadow: 0 0 12px rgb(255, 117, 5);
+  color: rgb(251, 243, 122);
+  text-shadow: 0 0 12px rgb(255, 161, 84);
 }
 
 
@@ -35,6 +35,6 @@
 
 .navbar-right p {
   font-size: 20px;
-  color: rgb(22, 150, 255, 1);
+  color: rgb(126, 197, 219);
   transition: color .3s ease;
 }

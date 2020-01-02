@@ -18,7 +18,7 @@
 
 .sample:active {
   transition: 80ms;
-  background-color: rgb(255, 241, 41);
+  background-color: rgb(251, 243, 122);
   box-shadow: 0 0 12px rgb(255, 117, 5);
 }
 

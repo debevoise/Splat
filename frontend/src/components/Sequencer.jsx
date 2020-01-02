@@ -21,6 +21,7 @@ export default class Sequencer extends React.Component {
       bpm: 120
     };
 
+    this.handleSpace = this.handleSpace.bind(this);
     this.setPlayState = this.setPlayState.bind(this);
     this.setBPM = this.setBPM.bind(this);
   }
@@ -52,12 +53,19 @@ export default class Sequencer extends React.Component {
     Tone.Transport.toggle();
   }
 
+  handleSpace(e) {
+    if (e.key === ' ' || e.key === 'Spacebar') {
+      this.setPlayState(!this.state.play)
+    }
+  }
+
   setBPM(e) {
     this.setState({ bpm: e.target.value });
     Tone.Transport.bpm.value = parseInt(e.target.value);
   }
 
   render() {
+    window.addEventListener('keydown', this.handleSpace)
     const { samples, audioElements, theme } = this.props;
     if (theme === undefined) {
       return null;
@@ -88,7 +96,7 @@ export default class Sequencer extends React.Component {
     });
 
     return (
-      <div className="sequ">
+      <div >
         <section className="sequence-controls">
           {this.state.play ? (
             <i className="fas fa-pause" onClick={() => this.setPlayState(false)} ></i>
