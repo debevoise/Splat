@@ -13,17 +13,16 @@ export default class Sequencer extends React.Component {
       this.trackRefs[i] = React.createRef();
     }
 
-    this.state = {
-      currentBeat: 0
-    }
-
-    this.toggleLoop = this.toggleLoop.bind(this);
     this.playStep = this.playStep.bind(this);
     this.playAtBeat = this.playAtBeat.bind(this);
-  }
+    this.state = {
+      currentBeat: 0,
+      play: false,
+      bpm: 120
+    };
 
-  toggleLoop() {
-    Tone.Transport.toggle();
+    this.setPlayState = this.setPlayState.bind(this);
+    this.setBPM = this.setBPM.bind(this);
   }
 
   playStep(time) {
@@ -44,15 +43,24 @@ export default class Sequencer extends React.Component {
   }
 
   componentDidMount() {
-    Tone.Transport.bpm.value = 120;
     Tone.Transport.swing = 0;
     Tone.Transport.scheduleRepeat(this.playStep, "8n");
+  }
+
+  setPlayState(value) {
+    this.setState({ play: value });
+    Tone.Transport.toggle();
+  }
+
+  setBPM(e) {
+    this.setState({ bpm: e.target.value });
+    Tone.Transport.bpm.value = parseInt(e.target.value);
   }
 
   render() {
     const { samples, audioElements, theme } = this.props;
     if (theme === undefined) {
-      return null
+      return null;
     }
 
     const audioNodes = samples.map(sample => {
@@ -78,19 +86,37 @@ export default class Sequencer extends React.Component {
           ref={this.trackRefs[i]}/>
       )
     });
-    
+
     return (
-      <section id="sequencer">
-        <ul id="sequencer-left">
-          {sampleNames}
-        </ul>
-        <section id="sequencer-main">
-          {tracks}
+      <div className="sequ">
+        <section className="sequence-controls">
+          {this.state.play ? (
+            <i className="fas fa-pause" onClick={() => this.setPlayState(false)} ></i>
+          ) : (
+            <i className = "fas fa-play" onClick = { () => this.setPlayState(true)} ></i>
+          )
+          }
+          <label htmlFor="bpm-input">
+            <input
+              type="number"
+              min="20"
+              max="300"
+              value={this.state.bpm}
+              onChange={this.setBPM}
+              id="bpm-input"
+              align="right"
+            />BPM
+          </label>
         </section>
-        <div onClick={this.toggleLoop}>
-          Play
-        </div>
-      </section>
+        <section id="sequencer-main">
+          <ul id="sequencer-left">
+            {sampleNames}
+          </ul>
+          <section id="sequencer-grid">
+            {tracks}
+          </section>
+        </section>
+      </div>
     );
   }
 }

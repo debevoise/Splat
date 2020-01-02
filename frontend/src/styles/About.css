@@ -10,6 +10,7 @@
   background-color: #FFF;
   border-radius: 10px;
   padding: 20px;
+  max-width: 520px;
 }
 
 .about-modal-container p {
@@ -28,4 +29,8 @@ a:hover {
 
 i {
   margin-right: 4px;
+}
+
+.about-modal-container h4 {
+  margin-bottom: 12px;
 }

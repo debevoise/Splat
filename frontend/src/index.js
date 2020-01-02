@@ -15,8 +15,8 @@ ReactDOM.render(<Root store={store} />, document.getElementById('root'));
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
 
-window.dispatch = store.dispatch;
-window.fetchThemes = fetchThemes;
-window.fetchTheme = fetchTheme;
-window.fetchSamples = fetchSamples;
-window.fetchDefaultTheme = fetchDefaultTheme;
+// window.dispatch = store.dispatch;
+// window.fetchThemes = fetchThemes;
+// window.fetchTheme = fetchTheme;
+// window.fetchSamples = fetchSamples;
+// window.fetchDefaultTheme = fetchDefaultTheme;
