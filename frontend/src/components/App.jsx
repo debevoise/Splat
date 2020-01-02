@@ -22,7 +22,8 @@ class App extends React.Component {
 	}
 
 	componentDidUpdate(prevProps) {
-		if (!prevProps.currentSamples && this.props.currentSamples) {
+		if (!prevProps.currentSamples && this.props.currentSamples ||
+			prevProps.currentTheme && prevProps.currentTheme._id !== this.props.currentTheme._id) {
 			this.createAudioNodes();
 		}
 	}
