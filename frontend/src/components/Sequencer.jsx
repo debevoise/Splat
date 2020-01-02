@@ -27,14 +27,19 @@ export default class Sequencer extends React.Component {
     });
     
     return (
-      <section id="sequencer">
-        <ul id="sequencer-left">
-          {sampleNames}
-        </ul>
-        <section id="sequencer-main">
-          {sequencerTracks}
+      <div>
+        <section className="sequence-controls">
+          <i className="fas fa-play"></i>
         </section>
-      </section>
+        <section id="sequencer">
+          <ul id="sequencer-left">
+            {sampleNames}
+          </ul>
+          <section id="sequencer-main">
+            {sequencerTracks}
+          </section>
+        </section>
+      </div>
     );
   }
 }
