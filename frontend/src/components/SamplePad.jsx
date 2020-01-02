@@ -12,11 +12,7 @@ export default class SamplePad extends React.Component {
   handlePress(e) {
     e.preventDefault();
     const { audio } = this.props;
-    if (audio.paused) {
-      audio.play();
-    } else {
-      audio.currentTime = 0;
-    }
+    audio.start();
   }
 
   handleKeyPress(e) {
