@@ -5,6 +5,7 @@ const samples = require('./routes/api/samples');
 const themes = require('./routes/api/themes');
 const sequences = require('./routes/api/sequences');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 Mongoose
   .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
