@@ -15,13 +15,11 @@ export default class SequencerTrack extends React.Component {
     this.playAtBeat = this.playAtBeat.bind(this);
   }
 
-  playAtBeat(beat) {
+  playAtBeat(beat, time) {
     if (this.state.stateArr[beat]) {
       const { audio } = this.props;
-      if (audio.paused) {
-        audio.play();
-      } else {
-        audio.currentTime = 0
+      if (audio.loaded) {
+        audio.start(time);
       }
     }
   }

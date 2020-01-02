@@ -26,25 +26,26 @@ export default class Sequencer extends React.Component {
     Tone.Transport.toggle();
   }
 
-  playStep() {
+  playStep(time) {
     this.setState(({ currentBeat }) => {
-      this.playAtBeat(this.state.currentBeat);
+      this.playAtBeat(this.state.currentBeat, time);
       return {
         currentBeat: (currentBeat+1) % 16
       }
     })
   }
 
-  playAtBeat(beat) {
+  playAtBeat(beat, time) {
     this.trackRefs.forEach((trackRef) => {
       if (trackRef.current) {
-        trackRef.current.playAtBeat(beat)
+        trackRef.current.playAtBeat(beat, time)
       }
     })
   }
 
   componentDidMount() {
     Tone.Transport.bpm.value = 120;
+    Tone.Transport.swing = 0;
     Tone.Transport.scheduleRepeat(this.playStep, "8n");
   }
 
@@ -53,6 +54,10 @@ export default class Sequencer extends React.Component {
     if (theme === undefined) {
       return null
     }
+
+    const audioNodes = samples.map(sample => {
+      return new Tone.Player(sample.url).toMaster();
+    });
 
     const sampleNames = samples.map( (sample, i) => {
       return (
@@ -67,7 +72,7 @@ export default class Sequencer extends React.Component {
       return (
         <SequencerTrack 
           sample={sample} 
-          audio={audioElements[i]} 
+          audio={audioNodes[i]} 
           key={sample._id}
           playAtBeat={this.playAtBeat}
           ref={this.trackRefs[i]}/>
