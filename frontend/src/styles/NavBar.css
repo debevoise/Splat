@@ -13,20 +13,22 @@
   text-shadow: 0 0 12px rgb(118, 193, 255);
   transition: color .5s ease;
 }
+
 .navbar-logo:hover, .navbar-right p:hover {
   color: rgb(251, 243, 122);
   text-shadow: 0 0 12px rgb(255, 161, 84);
 }
 
-
 .navbar-left{
   width: 305px;
 }
+
 .navbar-center{
   width: 305px;
   display:flex;
   justify-content: center;
 }
+
 .navbar-right{
   /* width: 305px; */
   display:flex;

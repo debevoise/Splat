@@ -24,6 +24,7 @@ export default class Sequencer extends React.Component {
     this.handleSpace = this.handleSpace.bind(this);
     this.setPlayState = this.setPlayState.bind(this);
     this.setBPM = this.setBPM.bind(this);
+    this.checkValue = this.checkValue.bind(this);
   }
 
   playStep(time) {
@@ -61,7 +62,15 @@ export default class Sequencer extends React.Component {
 
   setBPM(e) {
     this.setState({ bpm: e.target.value });
-    Tone.Transport.bpm.value = parseInt(e.target.value);
+  }
+
+  checkValue(e) {
+    if (e.target.value > 300 || e.target.value < 20) {
+      this.setState({ bpm: 120 });
+      Tone.Transport.bpm.value = 120;
+    } else {
+      Tone.Transport.bpm.value = parseInt(e.target.value);
+    }
   }
 
   render() {
@@ -71,15 +80,11 @@ export default class Sequencer extends React.Component {
       return null;
     }
 
-    const audioNodes = samples.map(sample => {
-      return new Tone.Player(sample.url).toMaster();
-    });
-
     const sampleNames = samples.map( (sample, i) => {
       return (
         <SequencerTrackTitle 
           name={sample.name} 
-          audio={audioElements[i]} 
+          audio={audioNodes[i]} 
           key={sample._id}/>
       )
     });
@@ -110,9 +115,10 @@ export default class Sequencer extends React.Component {
               min="20"
               max="300"
               value={this.state.bpm}
-              onChange={this.setBPM}
               id="bpm-input"
               align="right"
+              onChange={this.setBPM}
+              onBlur={this.checkValue}
             />BPM
           </label>
         </section>
