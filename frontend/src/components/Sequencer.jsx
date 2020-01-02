@@ -2,11 +2,21 @@ import React from 'react';
 import '../styles/sequencer.css';
 import SequencerTrack from './SequencerTrack';
 import SequencerTrackTitle from './SequencerTrackTitle';
+import Tone from "tone";
 
 export default class Sequencer extends React.Component {
   constructor(props) {
     super(props);
+
+    this.trackRefs = Array(8);
+    for (let i = 0; i < this.trackRefs.length; i++) {
+      this.trackRefs[i] = React.createRef();
+    }
+
+    this.playStep = this.playStep.bind(this);
+    this.playAtBeat = this.playAtBeat.bind(this);
     this.state = {
+      currentBeat: 0,
       play: false,
       bpm: 120
     };
@@ -15,29 +25,61 @@ export default class Sequencer extends React.Component {
     this.setBPM = this.setBPM.bind(this);
   }
 
+  playStep(time) {
+    this.setState(({ currentBeat }) => {
+      this.playAtBeat(this.state.currentBeat, time);
+      return {
+        currentBeat: (currentBeat+1) % 16
+      }
+    })
+  }
+
+  playAtBeat(beat, time) {
+    this.trackRefs.forEach((trackRef) => {
+      if (trackRef.current) {
+        trackRef.current.playAtBeat(beat, time)
+      }
+    })
+  }
+
+  componentDidMount() {
+    Tone.Transport.swing = 0;
+    Tone.Transport.scheduleRepeat(this.playStep, "8n");
+  }
+
   setPlayState(value) {
-    this.setState({play: value});
+    this.setState({ play: value });
+    Tone.Transport.toggle();
   }
 
   setBPM(e) {
-    this.setState({bpm: e.target.value});
+    this.setState({ bpm: e.target.value });
+    Tone.Transport.bpm.value = parseInt(e.target.value);
   }
 
   render() {
-    const { samples, audioElements, theme } = this.props;
+    const { samples, audioNodes, theme } = this.props;
     if (theme === undefined) {
       return null;
     }
 
-    const sampleNames = samples.map((sample, i) => {
+    const sampleNames = samples.map( (sample, i) => {
       return (
-        <SequencerTrackTitle name={sample.name} audio={audioElements[i]} key={sample._id} />
+        <SequencerTrackTitle 
+          name={sample.name} 
+          audio={audioNodes[i]} 
+          key={sample._id}/>
       )
     });
 
-    const sequencerTracks = samples.map(sample => {
+    const tracks = samples.map( (sample, i) => {
       return (
-        <SequencerTrack sample={sample} audio={sample.url} key={sample._id} />
+        <SequencerTrack 
+          sample={sample} 
+          audio={audioNodes[i]} 
+          key={sample._id}
+          playAtBeat={this.playAtBeat}
+          ref={this.trackRefs[i]}/>
       )
     });
 
@@ -67,7 +109,7 @@ export default class Sequencer extends React.Component {
             {sampleNames}
           </ul>
           <section id="sequencer-grid">
-            {sequencerTracks}
+            {tracks}
           </section>
         </section>
       </div>
