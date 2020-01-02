@@ -62,10 +62,12 @@ export default class SequencerTrack extends React.Component {
       let idx = this.state.stateArr[i];
       
       let playState = "";
-      if (idx && this.props.currentBeat === i && this.props.playing) {
-        playState = "playingActive";
-      } else if (this.props.currentBeat === i && !idx) {
-        playState = "playingInactive";
+      if (this.props.hasPlayed) {
+        if (idx && this.props.currentBeat === i && this.props.playing) {
+          playState = "playingActive";
+        } else if (this.props.currentBeat === i && !idx) {
+          playState = "playingInactive";
+        }
       }
 
       return (

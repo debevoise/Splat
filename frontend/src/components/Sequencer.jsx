@@ -26,6 +26,7 @@ class Sequencer extends React.Component {
     this.playAtBeat = this.playAtBeat.bind(this);
     this.state = {
       currentBeat: 0,
+      hasPlayed: false,
       play: false,
       bpm: 120
     };
@@ -57,7 +58,7 @@ class Sequencer extends React.Component {
   }
 
   setPlayState(value) {
-    this.setState({ play: value });
+    this.setState({ play: value, hasPlayed: true });
     Tone.Transport.toggle();
   }
 
@@ -88,8 +89,9 @@ class Sequencer extends React.Component {
           audio={audioNodes[i]} 
           key={sample._id}
           playAtBeat={this.playAtBeat}
-          currentBeat={this.state.currentBeat}
+          currentBeat={(this.state.currentBeat + 15 ) % 16}
           playing={this.state.play}
+          hasPlayed={this.state.hasPlayed}
           ref={this.trackRefs[i]}/>
       )
     });
