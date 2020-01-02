@@ -12,6 +12,19 @@ export default class SequencerTrack extends React.Component {
     };
 
     this.handleClick = this.handleClick.bind(this);
+    this.playAtBeat = this.playAtBeat.bind(this);
+  }
+
+  playAtBeat(beat, time) {
+    if (this.state.stateArr[beat]) {
+      const { audio } = this.props;
+      if (audio.loaded) {
+        audio.start(time);
+      }
+      else {
+        console.warn("not loaded", time);
+      }
+    }
   }
 
   handleClick(i) {
@@ -26,12 +39,18 @@ export default class SequencerTrack extends React.Component {
     };
   }
 
+  handleRightClick(i) {
+    return e => {
+      e.preventDefault();
+      this.props.playAtBeat(i);
+    }
+  }
+
   render() {
     if (this.props.sample === undefined) {
       return null;
     }
 
-    const { sample } = this.props;
     const trackNode = [];
 
     let i;
