@@ -7,22 +7,22 @@ const themesReducer = (state = {}, action) => {
   let newState = {};
   switch(action.type) {
     case RECEIVE_SEQUENCE:
-      newState[action.theme._id] = action.sequence.theme
+      newState[action.theme._id] = action.sequence.theme;
       return Object.assign({}, state, newState);
     case RECEIVE_THEMES:
       action.themes.forEach( theme => {
-        newState[theme._id] = theme
+        newState[theme._id] = theme;
       });
       return Object.assign({}, state, newState);
-    case RECEIVE_THEME:
-      let sampleInfo = []
-      action.theme.samples.forEach( sample => {
-        sampleInfo.push(sample._id)
-      })
-      return Object.assign({}, state, { [action.theme._id]: { samples: sampleInfo }});
+    // case RECEIVE_THEME:
+    //   let sampleInfo = [];
+    //   action.theme.samples.forEach( sample => {
+    //     sampleInfo.push(sample._id);
+    //   });
+    //   return Object.assign({}, state, { [action.theme._id]: { samples: sampleInfo }});
     default:
       return state;
   }
-}
+};
 
 export default themesReducer;
