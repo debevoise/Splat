@@ -16,7 +16,11 @@ class NavBar extends React.Component {
     return (
       <div className="navbar">
         <div className="navbar-left">
-          <div className="navbar-logo">splat</div>
+          <div
+            className="navbar-logo"
+            style={{ cursor: "pointer" }}
+            onClick={() => this.props.openModal('about')}
+          >splat</div>
         </div>
         <div className="navbar-center">
           <ThemePicker/>
