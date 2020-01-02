@@ -16,15 +16,15 @@ export default class Sequencer extends React.Component {
 
     const sampleNames = samples.map( (sample, i) => {
       return (
-        <SequencerTrackTitle name={sample.name} audio={audioElements[i]}/>
+          <SequencerTrackTitle name={sample.name} audio={audioElements[i]} key={sample._id}/>
       )
     });
 
     const sequencerTracks = samples.map( sample => {
       return (
-        <SequencerTrack sample={sample} audio={sample.url} />
+          <SequencerTrack sample={sample} audio={sample.url} key={sample._id}/>
       )
-    })
+    });
     
     return (
       <section id="sequencer">

@@ -34,8 +34,11 @@
   border: 1px solid darkgrey;
 }
 
-.track:hover, .track:active {
+.track:hover {
   background-color: slateblue;
 }
 
+.true {
+  background-color: slateblue;
+}
 
