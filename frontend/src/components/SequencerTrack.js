@@ -4,7 +4,7 @@ import '../styles/sequencer.css';
 export default class SequencerTrack extends React.Component {
   constructor(props) {
     super(props);
-    
+
     let stateArr = new Array(16);
     stateArr.fill(false);
     this.state = {
@@ -17,11 +17,11 @@ export default class SequencerTrack extends React.Component {
   handleClick(i) {
     return (e) => {
       e.preventDefault();
-      this.setState( ({ stateArr }) => {
-          let newStateArr = stateArr.slice();
-          newStateArr[i] = !newStateArr[i];
-          return { stateArr: newStateArr };
-        }
+      this.setState(({ stateArr }) => {
+        let newStateArr = stateArr.slice();
+        newStateArr[i] = !newStateArr[i];
+        return { stateArr: newStateArr };
+      }
       );
     };
   }
@@ -36,20 +36,20 @@ export default class SequencerTrack extends React.Component {
 
     let i;
     for (i = 0; i < 16; i++) {
-      trackNode.push(i);  
+      trackNode.push(i);
     }
 
-    const tracks = trackNode.map( (track, i) => {
+    const tracks = trackNode.map((track, i) => {
       let idx = this.state.stateArr[i];
       return (
-        <div className={ `track ${idx}` } onClick={this.handleClick(i)} idx={i} key={i}></div>
+        <div className={`track ${idx}`} onClick={this.handleClick(i)} idx={i} key={i}></div>
       )
     })
 
-    return(
+    return (
       <>
         {tracks}
       </>
     )
-  } 
+  }
 }
