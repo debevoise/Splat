@@ -23,7 +23,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.use(express.static('public'))
-app.get("/", (req, res) => res.send("Appy McAppFace"));
+app.get("/", (req, res) => res.send("Hello from API server"));
 app.use('/api/samples', samples)
 app.use('/api/themes', themes)
 app.use('/api/sequences', sequences)
