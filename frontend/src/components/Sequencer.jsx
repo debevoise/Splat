@@ -75,7 +75,7 @@ export default class Sequencer extends React.Component {
 
   render() {
     window.addEventListener('keydown', this.handleSpace)
-    const { samples, audioElements, theme } = this.props;
+    const { samples, audioNodes, theme } = this.props;
     if (theme === undefined) {
       return null;
     }
