@@ -180,7 +180,7 @@ class Sequencer extends React.Component {
               onClick={() => this.setPlayState(true)}
             ></i>
           )}
-          {this.renderSwingDropdown()}
+
           <label htmlFor="bpm-input">
             <input
               type="number"
@@ -194,6 +194,7 @@ class Sequencer extends React.Component {
             />
             BPM
           </label>
+          {this.renderSwingDropdown()}
         </section>
         <section id="sequencer-main">
           <ul id="sequencer-left">{sampleNames}</ul>
