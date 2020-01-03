@@ -26,10 +26,10 @@ class About extends React.Component {
         <h4>Sage - Backend Lead</h4>
         <a href="https://github.com/Saaaaaage" target="_blank" rel="noopener noreferrer">
           <i className="fab fa-github"></i>GitHub
-        </a> |
+        </a>  |  
         <a href="https://www.linkedin.com/in/sage-browning-a0351747" target="_blank" rel="noopener noreferrer">
           <i className="fab fa-linkedin"></i>LinkedIn
-        </a> | 
+        </a>  |  
         <a href="https://angel.co/sage-browning" target="_blank" rel="noopener noreferrer">
           <i className="fab fa-angellist"></i>AngelList
         </a>

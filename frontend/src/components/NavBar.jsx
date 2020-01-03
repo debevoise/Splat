@@ -17,20 +17,24 @@ class NavBar extends React.Component {
           <div
             className="navbar-logo"
             style={{ cursor: "pointer" }}
-            onClick={() => this.props.openModal('about')}
-          >splat</div>
+            onClick={() => this.props.openModal("about")}
+          >
+            <i className="logo fas fa-asterisk" />splat
+          </div>
         </div>
         <div className="navbar-center">
-          <ThemePicker/>
+          <ThemePicker />
         </div>
         <div className="navbar-right">
           <p
-            style={{cursor:"pointer"}}
-            onClick={() => this.props.openModal('about')}
-          ><i className="fas fa-info-circle"></i>About</p>
+            style={{ cursor: "pointer" }}
+            onClick={() => this.props.openModal("about")}
+          >
+            <i className="fas fa-info-circle"></i>About
+          </p>
         </div>
       </div>
-    )
+    );
   }
 }
 

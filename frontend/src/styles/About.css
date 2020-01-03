@@ -7,9 +7,10 @@
 }
 
 .about-modal-container {
-  background-color: #FFF;
+  background-color: #636363;
   border-radius: 10px;
-  padding: 20px;
+  color: white;
+  padding: 30px;
   max-width: 520px;
 }
 
@@ -19,12 +20,13 @@
 
 a {
   text-decoration: none;
-  color: rgb(56, 56, 56);
-  margin: 0 5px 0 5px;
+  color: rgb(90, 186, 250);
+  padding: 0 5px 0 5px;
 }
 
+
 a:hover {
-  color: rgb(15, 15, 15);
+  transform: scale(1.1);
 }
 
 i {
@@ -32,5 +34,5 @@ i {
 }
 
 .about-modal-container h4 {
-  margin-bottom: 12px;
+  margin-bottom: 9px;
 }

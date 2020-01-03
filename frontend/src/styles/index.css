@@ -18,12 +18,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background: linear-gradient(0deg, #2bb5f5, #003852, #000000);
+  background: linear-gradient(15deg, #087ac7, #01296b, #3b010a);
   background-size: 600% 600%;
 
-  -webkit-animation: gradientShift 30s ease infinite;
-  -moz-animation: gradientShift 30s ease infinite;
-  animation: gradientShift 30s ease infinite;
+  -webkit-animation: gradientShift 45s ease infinite;
+  -moz-animation: gradientShift 45s ease infinite;
+  animation: gradientShift 45s ease infinite;
 }
 
 @-webkit-keyframes gradientShift {

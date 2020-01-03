@@ -6,12 +6,20 @@
 }
 
 .navbar-logo {
-  font-size: 80px;
+  font-size: 65px;
   font-weight: 500;
   font-family: 'Bowlby One SC';
   letter-spacing: 10px;
   text-shadow: 0 0 12px rgb(118, 193, 255);
   transition: color .5s ease;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo i {
+  display: inline;
+  font-size: 55px;
+  padding-right: 15px;
 }
 
 .navbar-logo:hover, .navbar-right p:hover {
