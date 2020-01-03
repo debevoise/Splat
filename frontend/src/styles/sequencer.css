@@ -104,6 +104,7 @@
 
 .sequence-controls i:hover {
   text-shadow: 0 0 12px rgb(255, 117, 5);
+  cursor: pointer;
 }
 
 /* .sequence-controls i:active {

@@ -36,7 +36,8 @@ class Sequencer extends React.Component {
     this.handleSwingSelect = this.handleSwingSelect.bind(this);
     this.setPlayState = this.setPlayState.bind(this);
     this.setBPM = this.setBPM.bind(this);
-    this.checkValue = this.checkValue.bind(this);
+    this.confirmBPM = this.confirmBPM.bind(this);
+    this.handleBPMEnter = this.handleBPMEnter.bind(this);
   }
 
   playStep(time) {
@@ -107,14 +108,19 @@ class Sequencer extends React.Component {
     this.setState({ bpm: e.target.value });
   }
 
-
-
-  checkValue(e) {
+  confirmBPM(e) {
     if (e.target.value > 300 || e.target.value < 20) {
       this.setState({ bpm: 120 });
       Tone.Transport.bpm.value = 120;
     } else {
       Tone.Transport.bpm.value = parseInt(e.target.value);
+      e.target.blur();
+    }
+  }
+
+  handleBPMEnter(e) {
+    if (e.keyCode === 13) {
+      this.confirmBPM(e);
     }
   }
 
@@ -190,7 +196,8 @@ class Sequencer extends React.Component {
               id="bpm-input"
               align="right"
               onChange={this.setBPM}
-              onBlur={this.checkValue}
+              onBlur={this.confirmBPM}
+              onKeyDown={this.handleBPMEnter}
             />
             BPM
           </label>
