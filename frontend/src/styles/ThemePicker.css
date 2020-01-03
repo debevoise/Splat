@@ -7,7 +7,7 @@ select {
 
 .theme-picker-container {
   width: 100%;
-  color: rgb(22, 150, 255, 1);
+  color: rgb(126, 197, 219);
   font-size: 24px;
   font-weight: 500;
   display: flex;
@@ -17,11 +17,11 @@ select {
 
 .theme-dropdown {
   background-color: transparent;
-  color: rgb(22, 150, 255, 1);
+  color: rgb(126, 197, 219);
   font-size: 24px;
   font-weight: 500;
   padding: 10px 20px;
-  border-color: rgb(255, 241, 41);
+  border-color: rgb(251, 243, 122);
   width: 70%;
   max-width: 100%;
   cursor:pointer;
@@ -32,7 +32,7 @@ select {
 }
 
 .theme-dropdown:hover {
-  color: rgb(255, 241, 41);
+  color: rgb(251, 243, 122);
   text-shadow: 0 0 12px rgb(255, 117, 5);
 }
 

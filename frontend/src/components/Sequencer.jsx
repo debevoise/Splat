@@ -28,9 +28,12 @@ class Sequencer extends React.Component {
       currentBeat: 0,
       hasPlayed: false,
       play: false,
-      bpm: 120
+      bpm: 120,
+      swing: 0
     };
 
+    this.handleSpace = this.handleSpace.bind(this);
+    this.handleSwingSelect = this.handleSwingSelect.bind(this);
     this.setPlayState = this.setPlayState.bind(this);
     this.setBPM = this.setBPM.bind(this);
     this.checkValue = this.checkValue.bind(this);
@@ -55,7 +58,8 @@ class Sequencer extends React.Component {
 
   componentDidMount() {
     Tone.Transport.swing = 0;
-    Tone.Transport.scheduleRepeat(this.playStep, "8n");
+    Tone.Transport.swingSubdivision = "16n";
+    Tone.Transport.scheduleRepeat(this.playStep, "16n");
   }
 
   setPlayState(value) {
@@ -63,9 +67,47 @@ class Sequencer extends React.Component {
     Tone.Transport.toggle();
   }
 
+  handleSwingSelect(e) {
+    let swing;
+
+    switch (e.target.value) {
+      case '1':
+        swing = 0.05;
+        break;
+      case '2':
+        swing = 0.15;
+        break;
+      case '3':
+        swing = .3;
+        break;
+      case '4': 
+        swing = .6;
+        break;
+      case '5': 
+        swing = 1;
+        break;
+      case '0':
+      default:
+        swing = 0;
+        break;
+    }
+    Tone.Transport.swing = swing;
+    this.setState({ swing });
+  }
+
+   
+
+  handleSpace(e) {
+    if (e.key === ' ' || e.key === 'Spacebar') {
+      this.setPlayState(!this.state.play)
+    }
+  }
+
   setBPM(e) {
     this.setState({ bpm: e.target.value });
   }
+
+
 
   checkValue(e) {
     if (e.target.value > 300 || e.target.value < 20) {
@@ -76,7 +118,26 @@ class Sequencer extends React.Component {
     }
   }
 
+  renderSwingDropdown() {
+    return (
+      <div className='swing-selector'>
+        <span>
+          Swing: 
+        </span>
+        <select onChange={this.handleSwingSelect}>
+          <option value='0'>Vanilla</option>
+          <option value='1'>Breezy</option>
+          <option value='2'>Okay!</option>
+          <option value='3'>zaZAAM</option>
+          <option value='4'>Turbo Stank</option>
+          <option value='5'>Nuclear</option>
+        </select>
+      </div>
+    )
+  }
+
   render() {
+    window.addEventListener('keydown', this.handleSpace)
     const { samples, audioNodes, theme } = this.props;
     if (theme === undefined) {
       return null;
@@ -106,14 +167,20 @@ class Sequencer extends React.Component {
     });
 
     return (
-      <div className="sequ">
+      <div>
         <section className="sequence-controls">
           {this.state.play ? (
-            <i className="fas fa-pause" onClick={() => this.setPlayState(false)} ></i>
+            <i
+              className="fas fa-pause"
+              onClick={() => this.setPlayState(false)}
+            ></i>
           ) : (
-            <i className = "fas fa-play" onClick = { () => this.setPlayState(true)} ></i>
-          )
-          }
+            <i
+              className="fas fa-play"
+              onClick={() => this.setPlayState(true)}
+            ></i>
+          )}
+
           <label htmlFor="bpm-input">
             <input
               type="number"
@@ -124,16 +191,14 @@ class Sequencer extends React.Component {
               align="right"
               onChange={this.setBPM}
               onBlur={this.checkValue}
-            />BPM
+            />
+            BPM
           </label>
+          {this.renderSwingDropdown()}
         </section>
         <section id="sequencer-main">
-          <ul id="sequencer-left">
-            {sampleNames}
-          </ul>
-          <section id="sequencer-grid">
-            {tracks}
-          </section>
+          <ul id="sequencer-left">{sampleNames}</ul>
+          <section id="sequencer-grid">{tracks}</section>
         </section>
       </div>
     );

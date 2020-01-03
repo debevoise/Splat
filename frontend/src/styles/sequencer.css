@@ -59,7 +59,7 @@
 }
 
 .track:hover {
-  background-color: rgb(126, 197, 219);
+  background-color: rgb(255, 210, 137);
   box-shadow: 0 0 12px rgb(22, 150, 255, 1);
   /* transition: 200ms; */
 }
@@ -83,6 +83,7 @@
   align-items: center;
   font-size: 20px;
   background-color: #636363;
+  color: darkgray;
   border-radius: 7px 7px 0 0;
   padding: 10px 30px 0;
 }
@@ -90,7 +91,7 @@
 .sequence-controls i {
   transition: color 1s ease-out;
   color: rgb(126, 197, 219);
-  padding-top: 6px;
+  /* padding-top: 6px; */
 
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
@@ -118,19 +119,31 @@ input[type=number]::-webkit-outer-spin-button {
 
 .sequence-controls input {
   font-size: 20px;
-  border-radius: 5px;
+  /* border-radius: 5px; */
+
   background-color: #000;
+  border-bottom: 2px solid rgba(0, 0, 0, 0);
   color: darkgrey;
-  border: none;
-  padding: 5px 7px 0 15px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  margin-right: 5px;
+  margin-left: 14px;
+  /* margin: 5px 7px 0 15px; */
   outline: none;
   background-color: transparent;
-  cursor:pointer;
+  cursor: text;
+  transition: 300ms;
+}
+
+.sequence-controls input:hover {
+  border-bottom: 2px solid rgb(126, 197, 219);
+  transition: 300ms;
 }
 
 .sequence-controls label {
   color: darkgrey;
-  cursor: pointer;
+  cursor: default;
   font-weight: 700;
   font-size: 14px;
 
@@ -143,3 +156,40 @@ input[type=number]::-webkit-outer-spin-button {
                                   supported by Chrome, Opera and Firefox */
 }
 
+.swing-selector {
+  display: flex;
+  align-items: baseline;
+  padding-left: 10px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.swing-selector select {
+  background-color: transparent;
+  color: darkgray;
+  padding: 3px 0;
+  margin-right: 7px;
+  margin-left: 6px;
+  transition: 200ms;
+  font-size: 16px;
+  font-weight: 500;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  cursor:pointer;
+  display:flex;
+  justify-content: center;
+  text-align: center;
+  outline: none;
+}
+
+.swing-selector select:hover {
+  border-bottom: 2px solid rgb(126, 197, 219);
+  transition: 200ms;
+}
+
+.swing-selector span {
+  display: block;
+  font-weight: 300;
+  cursor: default;
+}

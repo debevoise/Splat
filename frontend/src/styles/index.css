@@ -17,10 +17,34 @@ body {
   font-family: 'IBM Plex Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: linear-gradient(#474747, #000000);
+
+  background: linear-gradient(15deg, #087ac7, #01296b, #3b010a);
+  background-size: 600% 600%;
+
+  -webkit-animation: gradientShift 45s ease infinite;
+  -moz-animation: gradientShift 45s ease infinite;
+  animation: gradientShift 45s ease infinite;
+}
+
+@-webkit-keyframes gradientShift {
+    0%{background-position:53% 0%}
+    50%{background-position:48% 100%}
+    100%{background-position:53% 0%}
+}
+@-moz-keyframes gradientShift {
+    0%{background-position:53% 0%}
+    50%{background-position:48% 100%}
+    100%{background-position:53% 0%}
+}
+@keyframes gradientShift {
+    0%{background-position:53% 0%}
+    50%{background-position:48% 100%}
+    100%{background-position:53% 0%}
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
