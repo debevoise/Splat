@@ -14,7 +14,11 @@ class About extends React.Component {
           Play your newest creation for your friends and hear them exclaim,
           "That's neat I guess", "Why's it called 'SPLAT'?" and "Hire that team
           right the heck now!" Check out our project on
-          <a target="_blank" href="https://www.github.com/debevoise/Splat">
+          <a
+            target="_blank"
+            href="https://www.github.com/debevoise/Splat"
+            rel="noopener noreferrer"
+          >
             Github.
           </a>
         </p>

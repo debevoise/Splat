@@ -137,9 +137,33 @@ input[type=number]::-webkit-outer-spin-button {
   transition: 300ms;
 }
 
-.sequence-controls input:hover {
+
+.sequence-controls button {
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+  color: darkgrey;
+  font-weight: 600;
+  font-size: 15px;
+  border: 0px;
+  padding: 3px;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  background-image: none;
+}
+
+.sequence-controls input:hover, button:hover {
   border-bottom: 2px solid rgb(126, 197, 219);
   transition: 300ms;
+}
+
+
+
+.sequence-controls button:active, input:focus {
+  border-bottom: 2px solid rgb(255, 210, 137) !important; 
+  transition: 100ms;
+
+
 }
 
 .sequence-controls label {
@@ -160,7 +184,7 @@ input[type=number]::-webkit-outer-spin-button {
 .swing-selector {
   display: flex;
   align-items: baseline;
-  padding-left: 10px;
+  padding-left: 35px;
   font-size: 16px;
   font-weight: 700;
 }
