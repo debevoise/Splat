@@ -2,82 +2,35 @@ import React from 'react';
 import '../styles/sequencer.css';
 
 export default class SequencerTrack extends React.Component {
-  constructor(props) {
-    super(props);
-
-    let stateArr = new Array(16);
-    stateArr.fill(false);
-    this.state = {
-      stateArr
-    };
-
-    this.handleClick = this.handleClick.bind(this);
-    this.playAtBeat = this.playAtBeat.bind(this);
-  }
-
-  playAtBeat(beat, time) {
-    if (this.state.stateArr[beat]) {
-      const { audio } = this.props;
-      if (audio.loaded) {
-        audio.start(time);
-      }
-      else {
-        console.warn("not loaded", time);
-      }
-    }
-  }
-
-  handleClick(i) {
-    return (e) => {
-      e.preventDefault();
-      this.setState(({ stateArr }) => {
-        let newStateArr = stateArr.slice();
-        newStateArr[i] = !newStateArr[i];
-        return { stateArr: newStateArr };
-      }
-      );
-    };
-  }
-
-  handleRightClick(i) {
-    return e => {
-      e.preventDefault();
-      this.props.playAtBeat(i);
-    };
-  }
-
   render() {
-    if (this.props.sample === undefined) {
+    const { track, currentBeat, hasPlayed, sample, playing, handleClick } = this.props;
+    
+    if (sample === undefined) {
       return null;
     }
 
-    const trackNode = [];
+    const trackNodes = [];
 
-    let i;
-    for (i = 0; i < 16; i++) {
-      trackNode.push(i);
-    }
-
-    const tracks = trackNode.map((track, i) => {
-      let idx = this.state.stateArr[i];
-      
+    for (let i = 0; i < 16; i++) {
       let playState = "";
-      if (this.props.hasPlayed) {
-        if (idx && this.props.currentBeat === i && this.props.playing) {
+      const selected = track[i];
+
+      if (hasPlayed) {
+        if (selected && currentBeat === i && playing) {
           playState = "playingActive";
-        } else if (this.props.currentBeat === i && !idx) {
+        } else if (!selected && currentBeat === i) {
           playState = "playingInactive";
         }
       }
+      trackNodes.push(
+        <div className={`track ${selected} ${playState}`} onClick={handleClick(i)} idx={i} key={i}></div>
+      );
+    }
 
-      return (
-        <div className={`track ${idx} ${playState}`} onClick={this.handleClick(i)} idx={i} key={i}></div>
-      )
-    })
 
     return (
       <>
-        {tracks}
+        {trackNodes}
       </>
     )
   }

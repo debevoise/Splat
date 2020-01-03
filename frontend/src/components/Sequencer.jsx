@@ -17,11 +17,6 @@ class Sequencer extends React.Component {
   constructor(props) {
     super(props);
 
-    this.trackRefs = Array(8);
-    for (let i = 0; i < this.trackRefs.length; i++) {
-      this.trackRefs[i] = React.createRef();
-    }
-
     this.playStep = this.playStep.bind(this);
     this.playAtBeat = this.playAtBeat.bind(this);
     this.state = {
@@ -29,8 +24,15 @@ class Sequencer extends React.Component {
       hasPlayed: false,
       play: false,
       bpm: 120,
-      swing: 0
-    };
+      swing: 0,
+      tracks: {}
+    }; 
+
+    for (let i = 0; i < 8; i++) {
+      const track = Array(16);
+      track.fill(false);
+      this.state.tracks[i] = track;
+    }
 
     this.handleSpace = this.handleSpace.bind(this);
     this.handleSwingSelect = this.handleSwingSelect.bind(this);
@@ -38,6 +40,19 @@ class Sequencer extends React.Component {
     this.setBPM = this.setBPM.bind(this);
     this.confirmBPM = this.confirmBPM.bind(this);
     this.handleBPMEnter = this.handleBPMEnter.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(track) {
+    return (beat) => (e) => {
+      e.preventDefault();
+      this.setState(({ tracks }) => {
+        const newTrack = Array.from(tracks[track]);
+        newTrack[beat] = !newTrack[beat];
+        const newTracks = {...tracks, [track]: newTrack}
+        return { tracks: newTracks };
+      })
+    }
   }
 
   playStep(time) {
@@ -50,11 +65,19 @@ class Sequencer extends React.Component {
   }
 
   playAtBeat(beat, time) {
-    this.trackRefs.forEach((trackRef) => {
-      if (trackRef.current) {
-        trackRef.current.playAtBeat(beat, time);
+    const { tracks } = this.state;
+    const { audioNodes } = this.props;
+
+    for (let i = 0; i < 8; i++) {
+      const track = tracks[i];
+
+      if (track[beat]) {
+        const audio = audioNodes[i];
+        if (audio.loaded) {
+          audio.start(time);
+        }
       }
-    });
+    }
   }
 
   componentDidMount() {
@@ -95,8 +118,6 @@ class Sequencer extends React.Component {
     Tone.Transport.swing = swing;
     this.setState({ swing });
   }
-
-   
 
   handleSpace(e) {
     if (e.key === ' ' || e.key === 'Spacebar') {
@@ -168,7 +189,8 @@ class Sequencer extends React.Component {
           currentBeat={(this.state.currentBeat + 15 ) % 16}
           playing={this.state.play}
           hasPlayed={this.state.hasPlayed}
-          ref={this.trackRefs[i]}/>
+          handleClick={this.handleClick(i)}
+          track={this.state.tracks[i]}/>
       )
     });
 
