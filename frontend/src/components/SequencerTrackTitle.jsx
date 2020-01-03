@@ -16,7 +16,7 @@ export default class SequencerTrackTitle extends React.Component {
   render() {
     const { name } = this.props;
     return(
-      <li className="track-title" onClick={this.handlePress}>
+      <li className="track-title" onMouseDown={this.handlePress}>
         {name}
       </li>
     )

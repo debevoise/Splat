@@ -118,14 +118,24 @@ input[type=number]::-webkit-outer-spin-button {
 
 .sequence-controls input {
   font-size: 20px;
-  border-radius: 5px;
+  /* border-radius: 5px; */
+
   background-color: #000;
+  border-bottom: 2px solid rgba(0, 0, 0, 0);
   color: darkgrey;
-  border: none;
-  padding: 5px 7px 0 15px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  margin: 5px 7px 0 15px;
   outline: none;
   background-color: transparent;
   cursor:pointer;
+  transition: 300ms;
+}
+
+.sequence-controls input:hover {
+  border-bottom: 2px solid darkgray;
+  transition: 300ms;
 }
 
 .sequence-controls label {
