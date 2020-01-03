@@ -18,7 +18,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background: linear-gradient(15deg, #087ac7, #01296b, #3b010a);
+  background: linear-gradient(15deg, #02426d, #012155, #3b010a);
   background-size: 600% 600%;
 
   -webkit-animation: gradientShift 45s ease infinite;
