@@ -34,6 +34,7 @@ class Sequencer extends React.Component {
       this.state.tracks[i] = track;
     }
 
+    this.setEmptyTracks = this.setEmptyTracks.bind(this);
     this.handleSpace = this.handleSpace.bind(this);
     this.handleSwingSelect = this.handleSwingSelect.bind(this);
     this.setPlayState = this.setPlayState.bind(this);
@@ -41,6 +42,7 @@ class Sequencer extends React.Component {
     this.confirmBPM = this.confirmBPM.bind(this);
     this.handleBPMEnter = this.handleBPMEnter.bind(this);
     this.handleClick = this.handleClick.bind(this);
+
   }
 
   handleClick(track) {
@@ -53,6 +55,17 @@ class Sequencer extends React.Component {
         return { tracks: newTracks };
       })
     }
+  }
+
+  setEmptyTracks() {
+    let tracks = {};
+    for (let i = 0; i < 8; i++) {
+      const track = Array(16);
+      track.fill(false);
+      tracks[i] = track;
+    }
+
+    this.setState({ tracks })
   }
 
   playStep(time) {
@@ -163,6 +176,14 @@ class Sequencer extends React.Component {
     )
   }
 
+  renderClearTracksButton() {
+    return (
+      <button onClick={this.setEmptyTracks}>
+        Clear Tracks
+      </button>
+    )
+  }
+
   render() {
     window.addEventListener('keydown', this.handleSpace)
     const { samples, audioNodes, theme } = this.props;
@@ -224,6 +245,7 @@ class Sequencer extends React.Component {
             BPM
           </label>
           {this.renderSwingDropdown()}
+          {this.renderClearTracksButton()}
         </section>
         <section id="sequencer-main">
           <ul id="sequencer-left">{sampleNames}</ul>
