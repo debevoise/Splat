@@ -43,7 +43,7 @@ export default class SequencerTrack extends React.Component {
     return e => {
       e.preventDefault();
       this.props.playAtBeat(i);
-    }
+    };
   }
 
   render() {
@@ -60,8 +60,18 @@ export default class SequencerTrack extends React.Component {
 
     const tracks = trackNode.map((track, i) => {
       let idx = this.state.stateArr[i];
+      
+      let playState = "";
+      if (this.props.hasPlayed) {
+        if (idx && this.props.currentBeat === i && this.props.playing) {
+          playState = "playingActive";
+        } else if (this.props.currentBeat === i && !idx) {
+          playState = "playingInactive";
+        }
+      }
+
       return (
-        <div className={`track ${idx}`} onClick={this.handleClick(i)} idx={i} key={i}></div>
+        <div className={`track ${idx} ${playState}`} onClick={this.handleClick(i)} idx={i} key={i}></div>
       )
     })
 

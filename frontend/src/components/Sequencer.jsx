@@ -2,9 +2,18 @@ import React from 'react';
 import '../styles/sequencer.css';
 import SequencerTrack from './SequencerTrack';
 import SequencerTrackTitle from './SequencerTrackTitle';
+import { connect } from 'react-redux';
 import Tone from "tone";
 
-export default class Sequencer extends React.Component {
+const msp = state => ({
+
+});
+
+const mdp = dispatch => ({
+  
+});
+
+class Sequencer extends React.Component {
   constructor(props) {
     super(props);
 
@@ -17,6 +26,7 @@ export default class Sequencer extends React.Component {
     this.playAtBeat = this.playAtBeat.bind(this);
     this.state = {
       currentBeat: 0,
+      hasPlayed: false,
       play: false,
       bpm: 120
     };
@@ -32,16 +42,16 @@ export default class Sequencer extends React.Component {
       this.playAtBeat(this.state.currentBeat, time);
       return {
         currentBeat: (currentBeat+1) % 16
-      }
-    })
+      };
+    });
   }
 
   playAtBeat(beat, time) {
     this.trackRefs.forEach((trackRef) => {
       if (trackRef.current) {
-        trackRef.current.playAtBeat(beat, time)
+        trackRef.current.playAtBeat(beat, time);
       }
-    })
+    });
   }
 
   componentDidMount() {
@@ -50,7 +60,7 @@ export default class Sequencer extends React.Component {
   }
 
   setPlayState(value) {
-    this.setState({ play: value });
+    this.setState({ play: value, hasPlayed: true });
     Tone.Transport.toggle();
   }
 
@@ -96,6 +106,9 @@ export default class Sequencer extends React.Component {
           audio={audioNodes[i]} 
           key={sample._id}
           playAtBeat={this.playAtBeat}
+          currentBeat={(this.state.currentBeat + 15 ) % 16}
+          playing={this.state.play}
+          hasPlayed={this.state.hasPlayed}
           ref={this.trackRefs[i]}/>
       )
     });
@@ -134,3 +147,5 @@ export default class Sequencer extends React.Component {
     );
   }
 }
+
+export default connect(msp, mdp)(Sequencer);
