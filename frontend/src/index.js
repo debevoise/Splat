@@ -4,8 +4,8 @@ import './styles/index.css';
 import createStore from './store/store'
 import * as serviceWorker from './serviceWorker';
 import Root from './components/Root';
-import { fetchSamples } from './actions/sample_actions';
-import { fetchTheme, fetchThemes, fetchDefaultTheme } from './actions/themes_actions';
+// import { fetchSamples } from './actions/sample_actions';
+// import { fetchTheme, fetchThemes, fetchDefaultTheme } from './actions/themes_actions';
 
 const store = createStore();
 ReactDOM.render(<Root store={store} />, document.getElementById('root'));

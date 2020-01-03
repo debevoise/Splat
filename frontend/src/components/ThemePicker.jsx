@@ -14,8 +14,11 @@ const mdp = dispatch => ({
 class ThemePicker extends React.Component {
   constructor(props) {
     super(props);
+
+
     this.state = {
-      currentThemeId: ''
+      currentThemeId: '',
+      defaultTheme: null
     };
 
     this.handleThemeSelect = this.handleThemeSelect.bind(this);
@@ -32,6 +35,10 @@ class ThemePicker extends React.Component {
 
   render() {
     const themes = this.props.themes.map((theme, i) => {
+      if (theme.name === 'default' && !this.state.defaultTheme) {
+        this.setState({ defaultTheme: theme._id});
+      }
+
       return (
         <option
           value={theme._id}
@@ -42,10 +49,14 @@ class ThemePicker extends React.Component {
         </option>
       )
     });
+
     return (
       <div className='theme-picker-container'>
         Theme:
-        <select onChange={this.handleThemeSelect} className='theme-dropdown'>
+        <select 
+          defaultValue={this.state.defaultTheme} 
+          onChange={this.handleThemeSelect} 
+          className='theme-dropdown'>
           {themes}
         </select>
       </div>

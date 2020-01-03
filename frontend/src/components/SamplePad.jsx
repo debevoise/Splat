@@ -4,9 +4,13 @@ import '../styles/SamplePad.css';
 export default class SamplePad extends React.Component {
   constructor(props) {
     super(props);
-
+    
     this.handlePress = this.handlePress.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+  }
+
+  componentDidMount() {
+    document.addEventListener("keydown", this.handleKeyPress);
   }
 
   handlePress(e) {
@@ -17,7 +21,8 @@ export default class SamplePad extends React.Component {
 
   handleKeyPress(e) {
     const { audio, keypress } = this.props;
-    if (audio.paused && e.key === keypress) {
+
+    if (audio.paused && e.target.key === keypress) {
       audio.play();
     } else {
       audio.currentTime = 0;
@@ -25,8 +30,9 @@ export default class SamplePad extends React.Component {
   }
 
   render() {
+    
     return (
-      <div className="sample" onMouseDown={this.handlePress} onKeyDown={this.handleKeyPress}>
+      <div className="sample" onMouseDown={this.handlePress}>
         <div className="sample-name">
           {this.props.sampleInfo.name.replace(/^\d+\s*/, '')}
         </div>

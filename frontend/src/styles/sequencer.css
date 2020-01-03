@@ -142,7 +142,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .sequence-controls label {
   color: darkgrey;
-  cursor: pointer;
+  cursor: default;
   font-weight: 700;
   font-size: 14px;
 
@@ -190,5 +190,5 @@ input[type=number]::-webkit-outer-spin-button {
 .swing-selector span {
   display: block;
   font-weight: 300;
-
+  cursor: default;
 }
