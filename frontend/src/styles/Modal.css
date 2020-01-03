@@ -13,4 +13,22 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  animation-name: emerge;
+  animation-duration: 0.3s;
+}
+
+
+@keyframes emerge {
+  0% {
+    transform: scale(0.5, 0.5) translate(-75%, -75%);
+    opacity: 0%;
+  }
+  60% {
+    transform: scale(1.03, 1.03) translate(-49%, -49%);
+    opacity: 70%;
+  }
+  100% {
+    transform: scale(1, 1) translate(-50%, -50%);
+    opacity: 100%;
+  }
 }
