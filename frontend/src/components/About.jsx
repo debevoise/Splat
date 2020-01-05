@@ -31,6 +31,22 @@ class About extends React.Component {
         >
           <i className="fab fa-github"></i>GitHub
         </a>
+        |
+        <a
+          href="https://www.linkedin.com/in/simon-debevoise-5303b474/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i className="fab fa-linkedin"></i>LinkedIn
+        </a>{" "}
+        |
+        <a
+          href="https://angel.co/simon-debevoise"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i className="fab fa-angellist"></i>AngelList
+        </a>
         <h4>Sage - Backend Lead</h4>
         <a
           href="https://github.com/Saaaaaage"
@@ -63,6 +79,20 @@ class About extends React.Component {
         >
           <i className="fab fa-github"></i>GitHub
         </a>
+        |
+        <a
+          href="https://www.linkedin.com/in/hunter-manel-55794585/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i className="fab fa-linkedin"></i>LinkedIn
+        </a>{" "}
+        |
+        <a
+          href="https://angel.co/hunter-manel"
+          target="_blank"
+          rel="noopener noreferrer"
+        ></a>
         <h4>Phillip - Flex Dev</h4>
         <a
           href="https://github.com/ParaLogia"
@@ -71,6 +101,20 @@ class About extends React.Component {
         >
           <i className="fab fa-github"></i>GitHub
         </a>
+        |
+        <a
+          href="https://www.linkedin.com/in/phillip96huang/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i className="fab fa-linkedin"></i>LinkedIn
+        </a>{" "}
+        |
+        <a
+          href="https://angel.co/phillip-huang-1"
+          target="_blank"
+          rel="noopener noreferrer"
+        ></a>
       </div>
     );
   }
