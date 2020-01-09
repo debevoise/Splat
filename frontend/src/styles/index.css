@@ -12,9 +12,7 @@ html, body {
   min-height: 100%;
 }
 
-body {
-  margin: 0;
-  font-family: 'IBM Plex Sans', 'Helvetica Neue', sans-serif;
+html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -24,6 +22,12 @@ body {
   -webkit-animation: gradientShift 45s ease infinite;
   -moz-animation: gradientShift 45s ease infinite;
   animation: gradientShift 45s ease infinite;
+}
+
+body {
+  margin: 0;
+  font-family: 'IBM Plex Sans', 'Helvetica Neue', sans-serif;
+  
 }
 
 @-webkit-keyframes gradientShift {
@@ -45,6 +49,10 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+main {
+  padding-bottom: 40px;
 }
 
 
