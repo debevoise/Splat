@@ -21,14 +21,14 @@
 @keyframes emerge {
   0% {
     transform: scale(0.5, 0.5) translate(-75%, -75%);
-    opacity: 0%;
+    opacity: 0;
   }
   60% {
     transform: scale(1.03, 1.03) translate(-49%, -49%);
-    opacity: 70%;
+    opacity: 0.7;
   }
   100% {
     transform: scale(1, 1) translate(-50%, -50%);
-    opacity: 100%;
+    opacity: 1.0;
   }
 }
