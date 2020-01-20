@@ -178,7 +178,7 @@ class Sequencer extends React.Component {
 
   renderClearTracksButton() {
     return (
-      <button onClick={this.setEmptyTracks}>
+      <button onClick={this.setEmptyTracks} className='clear-button'>
         Clear Tracks
       </button>
     )

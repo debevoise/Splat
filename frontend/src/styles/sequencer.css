@@ -107,6 +107,12 @@
   cursor: pointer;
 }
 
+.sequence-controls .clear-button {
+  font-size: 16px;
+  font-weight: 400;
+  margin-left: 20px;
+}
+
 /* .sequence-controls i:active {
   color: rgb(255, 241, 41);
   text-shadow: 0 0 12px rgb(255, 117, 5);
