@@ -10,9 +10,11 @@ This project is inspired by classic drum machines like the Roland 808 and by lat
 
 ![main view](https://raw.githubusercontent.com/debevoise/Splat/master/readme_media/main.png)
 
-## Features
+## Samples!
 
-At the center of Splat is [Tone.js](https://tonejs.github.io/), a JavaScript library that helped us work out many of the kinks of asynchronous function calls, which have poor time accuracy and were not trustworthy enough for sample-accurate audio playback.
+![sample pad](http://www.giphy.com/gifs/TGWarfcx8NkIW29tuJ)
+
+At any given time, the user has access to eight samples that comprise a theme. Samples are accessible via the sample pad and are automatically loaded into the audio sequencer as well. 
 
 ```js
 createAudioNodes() {
@@ -27,7 +29,7 @@ createAudioNodes() {
 
 ![dropdown](https://raw.githubusercontent.com/debevoise/Splat/master/readme_media/theme_picker.png)
 
-We achieved lightweight audio playback by preloading sample data into Tone.Player, a responsive audio buffer component. Users can easily change the bank of samples with a `HandleTheme` dropdown menu, which dispatches an Axios call to Splat's API and retrieves the sample information from a Mongo database. That data then gets sent to a Samples Reducer and gets stored in a Redux state.  
+We achieved lightweight audio playback by preloading sample data into Tone.Player, a responsive audio buffer component. Users can easily change the bank of samples with a `HandleTheme` dropdown menu, which dispatches an Axios call to Splat's API and retrieves the sample information from the Mongo database. That data then gets sent to a Samples Reducer and gets stored in a Redux state.  
 
 ```js
 handleThemeSelect(e) {
@@ -42,4 +44,9 @@ export const fetchTheme = themeId => {
 }
 ```
 
+## Sequencer!
+
+![sequencer](http://www.giphy.com/gifs/TGWarfcx8NkIW29tuJ)
+
+At the center of our Sequencer is [Tone.js](https://tonejs.github.io/), a JavaScript library that helped us work out many of the kinks of asynchronous function calls: vanilla JS methods like setInterval and setTimeout have poor time accuracy and were not trustworthy enough for sample-accurate audio playback. We relied on Tone.Transport, which ensured sample accuracy and allowed us to flexibly adjust tempo and swing. 
 
