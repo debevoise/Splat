@@ -92,7 +92,7 @@ class About extends React.Component {
           href="https://angel.co/hunter-manel"
           target="_blank"
           rel="noopener noreferrer"
-        ></a>
+        ><i className="fab fa-angellist"></i>AngelList</a>
         <h4>Phillip - Flex Dev</h4>
         <a
           href="https://github.com/ParaLogia"
@@ -114,7 +114,7 @@ class About extends React.Component {
           href="https://angel.co/phillip-huang-1"
           target="_blank"
           rel="noopener noreferrer"
-        ></a>
+        ><i className="fab fa-angellist"></i>AngelList</a>
       </div>
     );
   }

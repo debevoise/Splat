@@ -3,7 +3,6 @@ import React from 'react';
 export default class SequencerTrackTitle extends React.Component {
   constructor(props) {
     super(props);
-
     this.handlePress = this.handlePress.bind(this);
   }
 
