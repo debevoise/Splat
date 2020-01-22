@@ -14,7 +14,7 @@ This project is inspired by classic drum machines like the Roland 808 and by lat
 
 ![sample pad](https://raw.githubusercontent.com/debevoise/Splat/master/readme_media/sampler.gif)
 
-At any given time, the user has access to eight samples that comprise a theme. Samples are accessible via the sample pad and are automatically loaded into the audio sequencer as well. 
+At any given time, the user has access to eight samples that comprise a theme. Samples are accessible via the sample pad and are automatically loaded into the audio sequencer as well. We achieved lightweight audio playback by preloading sample data into Tone.Player, a responsive audio buffer component.
 
 ```js
 createAudioNodes() {
@@ -29,7 +29,7 @@ createAudioNodes() {
 
 ![dropdown](https://raw.githubusercontent.com/debevoise/Splat/master/readme_media/theme_picker.png)
 
-We achieved lightweight audio playback by preloading sample data into Tone.Player, a responsive audio buffer component. Users can easily change the bank of samples with a `HandleTheme` dropdown menu, which dispatches an Axios call to Splat's API and retrieves the sample information from the Mongo database. That data then gets sent to a Samples Reducer and gets stored in a Redux state.  
+Users can easily change the bank of samples with a `HandleTheme` dropdown menu, which dispatches an Axios call to Splat's API and retrieves the sample information from the Mongo database. That data then gets sent to a Samples Reducer and gets stored in the app's Redux state.  
 
 ```js
 handleThemeSelect(e) {
@@ -49,4 +49,32 @@ export const fetchTheme = themeId => {
 ![sequencer](readme_media/sequencer.gif)
 
 At the center of our Sequencer is [Tone.js](https://tonejs.github.io/), a JavaScript library that helped us work out many of the kinks of asynchronous function calls: vanilla JS methods like setInterval and setTimeout have poor time accuracy and were not trustworthy enough for sample-accurate audio playback. We relied on Tone.Transport, which ensured sample accuracy and allowed us to flexibly adjust tempo and swing. 
+
+Users have the option to toggle when samples play, change the speed (BPM) and select from six different amounts of swing. The track selections persist even when the current sample bank changes, allowing users to maintain the current pattern while testing out sounds to their liking. 
+
+
+
+## Backend
+
+We implemented Splat with a Mongo database and a Node.js / Express.js backend. 
+
+Sample model:
+
+```js
+const SampleSchema = new Schema({
+    name: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    url: {
+        type: String,
+        required: true
+    },
+    date: {
+        type: Date,
+        default: Date.now
+    }
+});
+```
 
