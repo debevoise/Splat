@@ -12,7 +12,7 @@ This project is inspired by classic drum machines like the Roland 808 and by lat
 
 ## Samples!
 
-![sample pad](http://www.giphy.com/gifs/TGWarfcx8NkIW29tuJ)
+![sample pad](https://raw.githubusercontent.com/debevoise/Splat/master/readme_media/sampler.gif)
 
 At any given time, the user has access to eight samples that comprise a theme. Samples are accessible via the sample pad and are automatically loaded into the audio sequencer as well. 
 
@@ -46,7 +46,7 @@ export const fetchTheme = themeId => {
 
 ## Sequencer!
 
-![sequencer](http://www.giphy.com/gifs/TGWarfcx8NkIW29tuJ)
+![sequencer](readme_media/sequencer.gif)
 
 At the center of our Sequencer is [Tone.js](https://tonejs.github.io/), a JavaScript library that helped us work out many of the kinks of asynchronous function calls: vanilla JS methods like setInterval and setTimeout have poor time accuracy and were not trustworthy enough for sample-accurate audio playback. We relied on Tone.Transport, which ensured sample accuracy and allowed us to flexibly adjust tempo and swing. 
 
