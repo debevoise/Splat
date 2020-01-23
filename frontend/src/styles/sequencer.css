@@ -1,3 +1,19 @@
+.sequencer-container {
+  width: 100%;
+}
+
+@media screen and ( max-width: 860px ){
+  .big-seq{
+    padding: 0 15px;
+    align-self: baseline;
+  }
+}
+
+.big-seq {
+  width: 830px;
+  margin: 0 auto;
+}
+
 #sequencer-main {
   display: flex;
   height: 320px;
@@ -19,6 +35,7 @@
 }
 
 .track-title {
+  min-width: 110px;
   display: inline-block;
   border-radius: 3px;
   padding: 10px;
