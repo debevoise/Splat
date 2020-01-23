@@ -19,6 +19,7 @@ class App extends React.Component {
 		this.props.fetchDefaultTheme();
 		this.props.fetchThemes();
 		this.props.fetchSamples();
+		this.props.fetchSequences();
 	}
 
 	componentDidUpdate(prevProps) {
@@ -49,7 +50,11 @@ class App extends React.Component {
 					<Sequencer
 						audioNodes={this.state.audioNodes}
 						samples={this.props.currentSamples} 
-						theme={this.props.currentTheme}/>
+						theme={this.props.currentTheme}
+						allSequences={this.props.allSequences}
+						setCurrentSequence={this.props.setCurrentSequence}
+						chooseTheme={this.props.chooseTheme}
+					/>
 				</main>
 			</div>
     );
