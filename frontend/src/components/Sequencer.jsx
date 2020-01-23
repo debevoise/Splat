@@ -247,7 +247,7 @@ class Sequencer extends React.Component {
     });
 
     const presets = this.props.allSequences.map((ele, i) => {
-      return <option value={ele._id}>{ele._id}</option>;
+      return <option value={ele._id}>{ele.name}</option>;
     })
 
     return (
