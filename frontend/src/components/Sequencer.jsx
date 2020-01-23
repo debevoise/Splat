@@ -216,7 +216,9 @@ class Sequencer extends React.Component {
     });
 
     //DELETE ME PLEASE DELETE ME I WONT FORGIVE MYSELF IF I DONT DELETE THIS
-    window.sequence = Object.values(this.state.tracks);
+    window.sequence = Object.values(this.state.tracks).map((arr) => {
+      return { pattern: arr }
+    });
 
     return (
       <div>
