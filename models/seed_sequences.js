@@ -808,7 +808,7 @@ Theme.findOne({name: 'vintage_mac' }).then(theme => {
 
 Theme.findOne({ name: '808'}).then(theme => {
     Sequence.create({
-
+            theme,
             "name": "808 Wonderland",
             "tempo": 100,
             "swing": 0.15,
@@ -975,9 +975,10 @@ Theme.findOne({ name: '808'}).then(theme => {
                 }
             ]
 
-    })
+    }).then((e) => console.log(e))
 
     Sequence.create({
+        theme,
         "name": "Groove Mastah",
         "tempo": 140,
         "swing": 0.05,
@@ -1143,7 +1144,9 @@ Theme.findOne({ name: '808'}).then(theme => {
                 ]
             }
         ]
-    })
+    }).then((e) => console.log(e))
+
+    // Sequence.create()
 })
 
 // Theme.find({ name: 'vintage_mac' }).then(theme => {
