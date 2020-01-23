@@ -27,7 +27,7 @@ html {
 body {
   margin: 0;
   font-family: 'IBM Plex Sans', 'Helvetica Neue', sans-serif;
-  
+  min-width: 900px;
 }
 
 @-webkit-keyframes gradientShift {
