@@ -35,10 +35,12 @@ class Sequencer extends React.Component {
 
     if (props.sequence) {
       this.state.bpm = props.sequence.tempo;
+      this.state.swing = props.sequence.swing;
       props.sequence.tracks.forEach((track, i) => {
         this.state.tracks[i] = track.pattern;
       })
       Tone.Transport.bpm.value = this.state.bpm;
+      Tone.Transport.swing = this.state.swing;
     }
     else {
       for (let i = 0; i < 8; i++) {
@@ -122,9 +124,11 @@ class Sequencer extends React.Component {
       })
       this.setState({
         bpm: this.props.sequence.tempo,
+        swing: this.props.sequence.swing,
         tracks: newTracks
       })
       Tone.Transport.bpm.value = this.props.sequence.tempo;
+      Tone.Transport.swing = this.props.sequence.swing;
     }
   }
 
@@ -141,29 +145,7 @@ class Sequencer extends React.Component {
   }
 
   handleSwingSelect(e) {
-    let swing;
-
-    switch (e.target.value) {
-      case '1':
-        swing = 0.05;
-        break;
-      case '2':
-        swing = 0.15;
-        break;
-      case '3':
-        swing = .3;
-        break;
-      case '4': 
-        swing = .6;
-        break;
-      case '5': 
-        swing = 1;
-        break;
-      case '0':
-      default:
-        swing = 0;
-        break;
-    }
+    let swing = parseFloat(e.target.value)
     Tone.Transport.swing = swing;
     this.setState({ swing });
   }
@@ -195,18 +177,28 @@ class Sequencer extends React.Component {
   }
 
   renderSwingDropdown() {
+    const swingValues = [
+      { value: 0.0, name: 'Vanilla' },
+      { value: 0.05, name: 'Breezy' },
+      { value: 0.15, name: 'Okay!' },
+      { value: 0.3, name: 'zaZAAM' },
+      { value: 0.6, name: 'Turbo Stank' },
+      { value: 1.0, name: 'Nuclear' },
+    ]
+
+    const swingOptions = swingValues.map(({ value, name }) => (
+      <option value={value} selected={value === this.state.swing} key={name}>
+        {name}
+      </option>
+    ))
+
     return (
       <div className='swing-selector'>
         <span>
           Swing: 
         </span>
         <select onChange={this.handleSwingSelect}>
-          <option value='0'>Vanilla</option>
-          <option value='1'>Breezy</option>
-          <option value='2'>Okay!</option>
-          <option value='3'>zaZAAM</option>
-          <option value='4'>Turbo Stank</option>
-          <option value='5'>Nuclear</option>
+          {swingOptions}
         </select>
       </div>
     )
