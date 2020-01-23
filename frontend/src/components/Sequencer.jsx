@@ -38,6 +38,7 @@ class Sequencer extends React.Component {
       props.sequence.tracks.forEach((track, i) => {
         this.state.tracks[i] = track.pattern;
       })
+      Tone.Transport.bpm.value = this.state.bpm;
     }
     else {
       for (let i = 0; i < 8; i++) {
@@ -123,6 +124,7 @@ class Sequencer extends React.Component {
         bpm: this.props.sequence.tempo,
         tracks: newTracks
       })
+      Tone.Transport.bpm.value = this.props.sequence.tempo;
     }
   }
 
