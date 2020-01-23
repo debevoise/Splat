@@ -251,5 +251,9 @@ input[type=number]::-webkit-outer-spin-button {
 .presets-swing-clear {
   display: flex;
   justify-content: space-between;
-  width: 638px;
+  width: 635px;
+}
+
+.fa-play {
+  align-self: center;
 }
