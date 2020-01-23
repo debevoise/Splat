@@ -30,6 +30,10 @@ const SequenceSchema = new Schema({
         type: Number,
         default: 120
     },
+    swing: {
+        type: Number,
+        default: 0
+    },
     theme: {
         type: Schema.Types.ObjectId,
         ref: 'Theme',

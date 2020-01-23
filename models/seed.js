@@ -73,13 +73,14 @@ Promise.all([
                         };
 
                         console.log('Inserting Sequence');
-                        Sequence.create({
-                            tracks: [track, track, track, track, track, track, track, track],
-                            theme: theme
-                        }).then(() => {
-                            console.log('Success!');
-                            process.exit();
-                        });
+                        // Sequence.create({
+                        //     name: 'empty',
+                        //     tracks: [track, track, track, track, track, track, track, track],
+                        //     theme: theme
+                        // }).then(() => {
+                        //     console.log('Success!');
+                        //     process.exit();
+                        // });
                     });
             });
     });
