@@ -216,7 +216,7 @@ class Sequencer extends React.Component {
     });
 
     return (
-      <div>
+      <div className="big-seq">
         <section className="sequence-controls">
           {this.state.play ? (
             <i
