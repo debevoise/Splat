@@ -42,7 +42,7 @@ class Sequencer extends React.Component {
     this.confirmBPM = this.confirmBPM.bind(this);
     this.handleBPMEnter = this.handleBPMEnter.bind(this);
     this.handleClick = this.handleClick.bind(this);
-
+    this.handleSequenceSelect = this.handleSequenceSelect.bind(this);
   }
 
   handleClick(track) {
@@ -102,6 +102,10 @@ class Sequencer extends React.Component {
   setPlayState(value) {
     this.setState({ play: value, hasPlayed: true });
     Tone.Transport.toggle();
+  }
+
+  handleSequenceSelect(e) {
+    this.props.setCurrentSequence(e.target.value);
   }
 
   handleSwingSelect(e) {
@@ -215,9 +219,21 @@ class Sequencer extends React.Component {
       )
     });
 
+    const presets = this.props.allSequences.map((ele, i) => {
+      return <option value={ele._id}>{ele._id}</option>;
+    })
+
     return (
       <div>
         <section className="sequence-controls">
+          
+          <div className='swing-selector' style={{padding:0}}>
+            <select onChange={this.handleSequenceSelect}>
+              <option value='0' disabled selected>Presets</option>
+              {presets}
+            </select>
+          </div>
+
           {this.state.play ? (
             <i
               className="fas fa-pause"
