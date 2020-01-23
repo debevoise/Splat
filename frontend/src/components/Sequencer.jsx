@@ -220,18 +220,18 @@ class Sequencer extends React.Component {
         <section className="sequence-controls">
           {this.state.play ? (
             <i
-              className="fas fa-pause"
-              onClick={() => this.setPlayState(false)}
+            className="fas fa-pause"
+            onClick={() => this.setPlayState(false)}
             ></i>
-          ) : (
-            <i
+            ) : (
+              <i
               className="fas fa-play"
               onClick={() => this.setPlayState(true)}
-            ></i>
-          )}
+              ></i>
+              )}
 
           <label htmlFor="bpm-input">
-            <input
+            <input  
               type="number"
               min="20"
               max="300"
@@ -241,7 +241,7 @@ class Sequencer extends React.Component {
               onChange={this.setBPM}
               onBlur={this.confirmBPM}
               onKeyDown={this.handleBPMEnter}
-            />
+              />
             BPM
           </label>
           {this.renderSwingDropdown()}
