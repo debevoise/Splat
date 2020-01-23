@@ -132,7 +132,10 @@ class Sequencer extends React.Component {
   }
 
   handleSequenceSelect(e) {
-    this.props.setCurrentSequence(e.target.value);
+    const seqId = e.target.value;
+    const themeId = this.props.allSequences[seqId].theme;
+    this.props.chooseTheme(themeId)
+    this.props.setCurrentSequence(seqId);
   }
 
   handleSwingSelect(e) {
@@ -246,7 +249,7 @@ class Sequencer extends React.Component {
       )
     });
 
-    const presets = this.props.allSequences.map((ele, i) => {
+    const presets = Object.values(this.props.allSequences || {}).map((ele, i) => {
       return <option value={ele._id}>{ele.name}</option>;
     })
 

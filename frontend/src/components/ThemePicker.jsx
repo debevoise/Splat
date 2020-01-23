@@ -28,6 +28,12 @@ class ThemePicker extends React.Component {
     this.setState({currentThemeId: this.props.currentThemeId});
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.currentThemeId !== this.props.currentThemeId) {
+      this.setState({currentThemeId: this.props.currentThemeId});
+    }
+  }
+
   handleThemeSelect(e) {
     this.setState({ currentThemeId: e.target.value });
     this.props.chooseTheme(e.target.value);
@@ -42,7 +48,7 @@ class ThemePicker extends React.Component {
       return (
         <option
           value={theme._id}
-          selected={theme.name === 'default'}
+          selected={theme._id === this.state.currentThemeId}
           key={i}
         >
           {theme.name}

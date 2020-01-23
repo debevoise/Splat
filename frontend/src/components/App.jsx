@@ -53,6 +53,7 @@ class App extends React.Component {
 						theme={this.props.currentTheme}
 						allSequences={this.props.allSequences}
 						setCurrentSequence={this.props.setCurrentSequence}
+						chooseTheme={this.props.chooseTheme}
 					/>
 				</main>
 			</div>
