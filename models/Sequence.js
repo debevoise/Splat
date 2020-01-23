@@ -11,19 +11,6 @@ const TrackSchema = new Schema({
             false, false, false, false
         ]
     }],
-    // sample: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Sample',
-    //     required: true,
-    // },
-    volume: {
-        type: Number,
-        default: 1
-    },
-    pitch: {
-        type: Number,
-        default: 0
-    },
     date: {
         type: Date,
         default: Date.now
@@ -31,6 +18,10 @@ const TrackSchema = new Schema({
 });
 
 const SequenceSchema = new Schema({
+    name: {
+        type: String,
+        required: true
+    },
     tracks: [{
         type: TrackSchema,
         default: [null, null, null, null, null, null, null, null]
@@ -38,10 +29,6 @@ const SequenceSchema = new Schema({
     tempo: {
         type: Number,
         default: 120
-    },
-    masterVolume: {
-        type: Number,
-        default: 1
     },
     theme: {
         type: Schema.Types.ObjectId,
