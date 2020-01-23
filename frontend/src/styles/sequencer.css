@@ -1,16 +1,17 @@
+.sequencer-container {
+  width: 100%;
+}
+
 @media screen and ( max-width: 860px ){
   .big-seq{
-    position: fixed;
-    top: 428px;
-    left: 15px;
+    padding: 0 15px;
     align-self: baseline;
   }
 }
 
 .big-seq {
   width: 860px;
-  overflow-x: scroll;
-  /* white-space: nowrap; */
+  margin: 0 auto;
 }
 
 #sequencer-main {
