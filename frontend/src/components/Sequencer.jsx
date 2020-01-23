@@ -5,9 +5,14 @@ import SequencerTrackTitle from './SequencerTrackTitle';
 import { connect } from 'react-redux';
 import Tone from "tone";
 
-const msp = state => ({
+const msp = state => {
+  const currentSequenceId = state.session.currentSequence;
+  const sequence = state.entities.sequences[currentSequenceId];
 
-});
+  return {
+    sequence
+  };
+};
 
 const mdp = dispatch => ({
   
@@ -23,15 +28,23 @@ class Sequencer extends React.Component {
       currentBeat: 0,
       hasPlayed: false,
       play: false,
-      bpm: 120,
       swing: 0,
+      bpm: 120,
       tracks: {}
     }; 
 
-    for (let i = 0; i < 8; i++) {
-      const track = Array(16);
-      track.fill(false);
-      this.state.tracks[i] = track;
+    if (props.sequence) {
+      this.state.bpm = props.sequence.tempo;
+      props.sequence.tracks.forEach((track, i) => {
+        this.state.tracks[i] = track.pattern;
+      })
+    }
+    else {
+      for (let i = 0; i < 8; i++) {
+        const track = Array(16);
+        track.fill(false);
+        this.state.tracks[i] = track;
+      }
     }
 
     this.setEmptyTracks = this.setEmptyTracks.bind(this);
@@ -97,6 +110,20 @@ class Sequencer extends React.Component {
     Tone.Transport.swing = 0;
     Tone.Transport.swingSubdivision = "16n";
     Tone.Transport.scheduleRepeat(this.playStep, "16n");
+  }
+
+  componentDidUpdate(prevProps) {
+    if ((!prevProps.sequence && this.props.sequence) || 
+          (prevProps.sequence && prevProps.sequence._id !== this.props.sequence._id)) {
+      const newTracks = {};
+      this.props.sequence.tracks.forEach((track, i) => {
+        newTracks[i] = track.pattern;
+      })
+      this.setState({
+        bpm: this.props.sequence.tempo,
+        tracks: newTracks
+      })
+    }
   }
 
   setPlayState(value) {
