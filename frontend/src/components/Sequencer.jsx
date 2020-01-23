@@ -14,41 +14,40 @@ const msp = state => {
   };
 };
 
-const mdp = dispatch => ({
-  
-});
-
 class Sequencer extends React.Component {
   constructor(props) {
     super(props);
 
     this.playStep = this.playStep.bind(this);
     this.playAtBeat = this.playAtBeat.bind(this);
-    this.state = {
-      currentBeat: 0,
-      hasPlayed: false,
-      play: false,
-      swing: 0,
-      bpm: 120,
-      tracks: {}
-    }; 
+
+    let bpm = 120, swing = 0, tracks = {};
 
     if (props.sequence) {
-      this.state.bpm = props.sequence.tempo;
-      this.state.swing = props.sequence.swing;
+      bpm = props.sequence.tempo;
+      swing = props.sequence.swing;
       props.sequence.tracks.forEach((track, i) => {
-        this.state.tracks[i] = track.pattern;
+        tracks[i] = track.pattern;
       })
-      Tone.Transport.bpm.value = this.state.bpm;
-      Tone.Transport.swing = this.state.swing;
+      Tone.Transport.bpm.value = bpm;
+      Tone.Transport.swing = swing;
     }
     else {
       for (let i = 0; i < 8; i++) {
         const track = Array(16);
         track.fill(false);
-        this.state.tracks[i] = track;
+        tracks[i] = track;
       }
     }
+
+    this.state = {
+      currentBeat: 0,
+      hasPlayed: false,
+      play: false,
+      bpm,
+      swing,
+      tracks
+    }; 
 
     this.setEmptyTracks = this.setEmptyTracks.bind(this);
     this.handleSpace = this.handleSpace.bind(this);
@@ -187,7 +186,7 @@ class Sequencer extends React.Component {
     ]
 
     const swingOptions = swingValues.map(({ value, name }) => (
-      <option value={value} selected={value === this.state.swing} key={name}>
+      <option value={value} key={name}>
         {name}
       </option>
     ))
@@ -197,7 +196,8 @@ class Sequencer extends React.Component {
         <span>
           Swing: 
         </span>
-        <select onChange={this.handleSwingSelect}>
+        <select onChange={this.handleSwingSelect}
+                value={this.state.swing}>
           {swingOptions}
         </select>
       </div>
@@ -244,7 +244,7 @@ class Sequencer extends React.Component {
     });
 
     const presets = Object.values(this.props.allSequences || {}).map((ele, i) => {
-      return <option value={ele._id}>{ele.name}</option>;
+      return <option value={ele._id} key={ele._id}>{ele.name}</option>;
     })
 
     return (
@@ -252,8 +252,8 @@ class Sequencer extends React.Component {
         <section className="sequence-controls">
           
           <div className='swing-selector' style={{padding:0}}>
-            <select onChange={this.handleSequenceSelect}>
-              <option value='0' disabled selected>Presets</option>
+            <select onChange={this.handleSequenceSelect} defaultValue='0'>
+              <option value='0' disabled>Presets</option>
               {presets}
             </select>
           </div>
@@ -296,4 +296,4 @@ class Sequencer extends React.Component {
   }
 }
 
-export default connect(msp, mdp)(Sequencer);
+export default connect(msp)(Sequencer);
