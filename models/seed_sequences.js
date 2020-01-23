@@ -1149,6 +1149,177 @@ Theme.findOne({ name: '808'}).then(theme => {
     // Sequence.create()
 })
 
+Theme.findOne({ name: 'bleeps'}).then( theme => {
+    Sequence.create({
+        theme,
+        "name": "Robot dance",
+        "tempo": 60,
+        "swing": 0.15,
+        "tracks": [
+            {
+                "pattern": [
+                    true,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    true
+                ]
+            },
+            {
+                "pattern": [
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    true,
+                    false,
+                    true,
+                    false,
+                    true,
+                    false,
+                    true,
+                    false
+                ]
+            },
+            {
+                "pattern": [
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    true,
+                    true,
+                    false,
+                    false,
+                    false,
+                    true,
+                    false,
+                    true,
+                    false,
+                    false
+                ]
+            },
+            {
+                "pattern": [
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    true,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+                ]
+            },
+            {
+                "pattern": [
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    true,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+                ]
+            },
+            {
+                "pattern": [
+                    false,
+                    false,
+                    false,
+                    true,
+                    true,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+                ]
+            },
+            {
+                "pattern": [
+                    false,
+                    false,
+                    true,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+                ]
+            },
+            {
+                "pattern": [
+                    true,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+                ]
+            }
+        ]
+    })
+})
+
 // Theme.find({ name: 'vintage_mac' }).then(theme => {
 
 // })
