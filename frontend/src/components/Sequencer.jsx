@@ -250,42 +250,51 @@ class Sequencer extends React.Component {
     return (
       <div className="big-seq">
         <section className="sequence-controls">
-          
-          <div className='swing-selector' style={{padding:0}}>
-            <select onChange={this.handleSequenceSelect}>
-              <option value='0' disabled selected>Presets</option>
-              {presets}
-            </select>
+          <div className='play-bpm'>
+            {this.state.play ? (
+              <i
+              className="fas fa-pause"
+              onClick={() => this.setPlayState(false)}
+              ></i>
+              ) : (
+                <i
+                className="fas fa-play"
+                onClick={() => this.setPlayState(true)}
+                ></i>
+            )}
+
+            <label htmlFor="bpm-input">
+              <input
+                type="number"
+                min="20"
+                max="300"
+                value={this.state.bpm}
+                id="bpm-input"
+                align="right"
+                onChange={this.setBPM}
+                onBlur={this.confirmBPM}
+                onKeyDown={this.handleBPMEnter}
+                />
+              BPM
+            </label>
           </div>
 
-          {this.state.play ? (
-            <i
-            className="fas fa-pause"
-            onClick={() => this.setPlayState(false)}
-            ></i>
-            ) : (
-              <i
-              className="fas fa-play"
-              onClick={() => this.setPlayState(true)}
-              ></i>
-              )}
+          <div className='presets-swing-clear'>
+            <div
+              className="sequence-selector swing-selector"
+              style={{ padding: 0 }}
+              >
+              <select onChange={this.handleSequenceSelect}>
+                <option value="0" disabled selected>
+                  Presets
+                </option>
+                {presets}
+              </select>
+            </div>
 
-          <label htmlFor="bpm-input">
-            <input  
-              type="number"
-              min="20"
-              max="300"
-              value={this.state.bpm}
-              id="bpm-input"
-              align="right"
-              onChange={this.setBPM}
-              onBlur={this.confirmBPM}
-              onKeyDown={this.handleBPMEnter}
-              />
-            BPM
-          </label>
-          {this.renderSwingDropdown()}
-          {this.renderClearTracksButton()}
+            {this.renderSwingDropdown()}
+            {this.renderClearTracksButton()}
+          </div>
         </section>
         <section id="sequencer-main">
           <ul id="sequencer-left">{sampleNames}</ul>

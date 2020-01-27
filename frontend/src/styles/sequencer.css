@@ -102,7 +102,7 @@
   background-color: #636363;
   color: darkgray;
   border-radius: 7px 7px 0 0;
-  padding: 10px 30px 0;
+  padding: 15px 30px 0 20px;
 }
 
 .sequence-controls i {
@@ -240,4 +240,20 @@ input[type=number]::-webkit-outer-spin-button {
   display: block;
   font-weight: 300;
   cursor: default;
+}
+
+.play-bpm {
+  display: flex;
+  justify-content: space-between;
+  width: 127px;
+}
+
+.presets-swing-clear {
+  display: flex;
+  justify-content: space-between;
+  width: 635px;
+}
+
+.fa-play {
+  align-self: center;
 }
