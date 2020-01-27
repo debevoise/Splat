@@ -41,14 +41,9 @@ class ThemePicker extends React.Component {
 
   render() {
     const themes = this.props.themes.map((theme, i) => {
-      if (theme.name === 'default' && !this.state.defaultTheme) {
-        this.setState({ defaultTheme: theme._id});
-      }
-
       return (
         <option
           value={theme._id}
-          selected={theme._id === this.state.currentThemeId}
           key={i}
         >
           {theme.name}
@@ -60,10 +55,10 @@ class ThemePicker extends React.Component {
       <div className='theme-picker-container'>
         Theme:
         <select 
-          defaultValue={this.state.defaultTheme} 
           onChange={this.handleThemeSelect} 
+          value={this.state.currentThemeId}
           className='theme-dropdown'>
-          {themes}
+          {themes}  
         </select>
       </div>
     )
