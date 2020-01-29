@@ -243,9 +243,11 @@ class Sequencer extends React.Component {
       )
     });
 
+
     const presets = Object.values(this.props.allSequences || {}).map((ele, i) => {
       return <option value={ele._id} key={ele._id}>{ele.name}</option>;
     })
+
 
     return (
       <div className="big-seq">
