@@ -158,6 +158,7 @@ input[type=number]::-webkit-outer-spin-button {
   background-color: transparent;
   cursor: text;
   transition: 300ms;
+  width: 40px;
 }
 
 
@@ -245,6 +246,7 @@ input[type=number]::-webkit-outer-spin-button {
 .play-bpm {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 127px;
 }
 
