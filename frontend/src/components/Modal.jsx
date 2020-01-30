@@ -2,6 +2,7 @@ import React from 'react';
 import { closeModal } from '../actions/ui_actions';
 import { connect } from 'react-redux';
 import About from './About';
+import Help from './Help';
 import '../styles/Modal.css';
 
 function Modal({ modal, closeModal }) {
@@ -12,6 +13,9 @@ function Modal({ modal, closeModal }) {
   switch (modal) {
     case 'about':
       component = <About/>;
+      break;
+    case 'help':
+      component = <Help />;
       break;
     default:
       return null;
