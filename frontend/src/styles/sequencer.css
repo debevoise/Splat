@@ -2,8 +2,8 @@
   width: 100%;
 }
 
-@media screen and ( max-width: 860px ){
-  .big-seq{
+@media screen and ( max-width: 860px ) {
+  .big-seq {
     padding: 0 15px;
     align-self: baseline;
   }

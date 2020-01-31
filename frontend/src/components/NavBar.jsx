@@ -30,7 +30,7 @@ class NavBar extends React.Component {
             style={{ cursor: "pointer" }}
             onClick={() => this.props.openModal("help")}
           >
-            <i className="fas fa-info-circle"></i>Help
+            <i className="fas fa-question-circle"></i>Help
           </p>
         </div>
       </div>
