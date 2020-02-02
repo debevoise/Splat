@@ -39,7 +39,6 @@
 }
 
 .navbar-right{
-  /* width: 305px; */
   display:flex;
   justify-content: flex-end;
 }

@@ -2,13 +2,8 @@
   display: grid;
   grid-template: repeat(2, 100px) / repeat(4, 100px);
   gap: 20px;
-
   padding: 60px 40px;
   text-align: center;
-
-  /* margin: 0 auto; */
-  /* background-color: rgb(255, 160, 123); */
-
 }
 
 
