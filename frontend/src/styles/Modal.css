@@ -15,8 +15,16 @@
   transform: translate(-50%, -50%);
   animation-name: emerge;
   animation-duration: 0.3s;
+  /* width: 588px; */
+  margin: auto;
 }
-
+/* 
+@media screen and ( max-width: 588px ) {
+  .modal-child {
+    padding: 0 15px;
+    align-self: baseline;
+  }
+} */
 
 @keyframes emerge {
   0% {

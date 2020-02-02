@@ -1,0 +1,37 @@
+.help-logo {
+  font-size: 37px;
+  font-weight: 500;
+  font-family: 'Bowlby One SC';
+  letter-spacing: 4px;
+  /* line-height: 0; */
+
+}
+
+.help-modal-container {
+  background-color: rgb(68, 68, 68);
+  border-radius: 10px;
+  color: white;
+  padding: 34px;
+  max-width: 520px;
+}
+
+.help-modal-container p {
+  line-height: 1.4;
+}
+
+.help-modal-container ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* .help-modal-container h1 {
+  word-wrap: normal;
+} */
+
+i {
+  margin-right: 4px;
+}
+
+.help-modal-container h4 {
+  margin-bottom: 9px;
+}
