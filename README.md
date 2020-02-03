@@ -8,7 +8,7 @@ Splat features a wide bank of samples, presets, and 8 playback channels.
 
 This project is inspired by classic drum machines like the Roland 808 and by later technologies (we're looking at you Ableton Live) that allow producers to build simple but engaging songs by selecting samples and triggering them in a grid layout.
 
-![main view](https://raw.githubusercontent.com/debevoise/Splat/master/readme_media/main_new.png)
+![main view](readme_media/main_new.png)
 
 ## Samples!
 
@@ -27,7 +27,7 @@ createAudioNodes() {
 }
 ```
 
-![dropdown](https://raw.githubusercontent.com/debevoise/Splat/master/readme_media/theme_picker_new.png)
+![dropdown](readme_media/theme_picker_new.png)
 
 Users can easily change the bank of samples with a `HandleTheme` dropdown menu, which dispatches an Axios call to Splat's API and retrieves the sample information from the Mongo database. That data then gets sent to a Samples Reducer and gets stored in the app's Redux state.  
 
