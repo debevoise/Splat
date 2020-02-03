@@ -8,7 +8,7 @@ Splat features a wide bank of samples, presets, and 8 playback channels.
 
 This project is inspired by classic drum machines like the Roland 808 and by later technologies (we're looking at you Ableton Live) that allow producers to build simple but engaging songs by selecting samples and triggering them in a grid layout.
 
-![main view](https://raw.githubusercontent.com/debevoise/Splat/master/readme_media/main.png)
+![main view](readme_media/main_new.png)
 
 ## Samples!
 
@@ -27,7 +27,7 @@ createAudioNodes() {
 }
 ```
 
-![dropdown](https://raw.githubusercontent.com/debevoise/Splat/master/readme_media/theme_picker.png)
+![dropdown](readme_media/theme_picker_new.png)
 
 Users can easily change the bank of samples with a `HandleTheme` dropdown menu, which dispatches an Axios call to Splat's API and retrieves the sample information from the Mongo database. That data then gets sent to a Samples Reducer and gets stored in the app's Redux state.  
 
@@ -46,7 +46,7 @@ export const fetchTheme = themeId => {
 
 ## Sequencer!
 
-![sequencer](readme_media/sequencer.gif)
+![sequencer](readme_media/sequencer_new.gif)
 
 At the center of our Sequencer is [Tone.js](https://tonejs.github.io/), a JavaScript library that helped us work out many of the kinks of asynchronous function calls: vanilla JS methods like setInterval and setTimeout have poor time accuracy and were not trustworthy enough for sample-accurate audio playback. We relied on Tone.Transport, which ensured sample accuracy and allowed us to flexibly adjust tempo and swing. 
 
