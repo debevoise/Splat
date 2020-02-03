@@ -56,7 +56,7 @@ Users have the option to toggle when samples play, change the speed (BPM) and se
 
 ## Backend
 
-We implemented Splat with a Mongo database and a Node.js / Express.js backend. 
+We implemented Splat with a Mongo database and a Node.js / Express.js backend. On its initial load, Splat makes multiple Axios calls to the Mongo database to retrieve the Theme and Preset indexes and requests more explicit information on Theme or Preset select. 
 
 Sample model:
 
