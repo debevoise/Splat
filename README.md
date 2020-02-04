@@ -8,7 +8,7 @@ Splat features a wide bank of samples, presets, and 8 playback channels.
 
 This project is inspired by classic drum machines like the Roland 808 and by later technologies (we're looking at you Ableton Live) that allow producers to build simple but engaging songs by selecting samples and triggering them in a grid layout.
 
-![main view](readme_media/main_new.png)
+![main view](readme_media/main_new.gif)
 
 ## Samples!
 
