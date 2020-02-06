@@ -29,7 +29,7 @@ createAudioNodes() {
 
 ![dropdown](readme_media/theme_picker_new.png)
 
-Users can easily change the bank of samples with a `HandleTheme` dropdown menu, which dispatches an Axios call to Splat's API and retrieves the sample information from the Mongo database. That data then gets sent to a Samples Reducer and gets stored in the app's Redux state.  
+Users can easily change the bank of samples with a `HandleTheme` dropdown menu, which dispatches an Axios call to Splat's API and retrieves the sample information from the Mongo database. That data then gets sent to a Samples Reducer and gets stored in the app's Redux state.
 
 ```js
 handleThemeSelect(e) {
